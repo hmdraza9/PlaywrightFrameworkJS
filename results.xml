@@ -1,6 +1,6 @@
-<testsuites id="" name="" tests="2" failures="0" skipped="0" errors="0" time="3.7400249999999997">
-<testsuite name="src/tests/google/google.spec.ts" timestamp="2024-10-30T13:00:11.223Z" hostname="" tests="2" failures="0" skipped="0" time="2.879" errors="0">
-<testcase name="Navigate to Google" classname="src/tests/google/google.spec.ts" time="1.303">
+<testsuites id="" name="" tests="2" failures="0" skipped="0" errors="0" time="5.937442">
+<testsuite name="src/tests/google/google.spec.ts" timestamp="2024-10-30T13:41:23.881Z" hostname="" tests="2" failures="0" skipped="0" time="4.662" errors="0">
+<testcase name="Navigate to Google" classname="src/tests/google/google.spec.ts" time="3.212">
 <system-out>
 <![CDATA[
 [[ATTACHMENT|test-results/src-tests-google-google-Navigate-to-Google/test-finished-1.png]]
@@ -9,9 +9,9 @@
 ]]>
 </system-out>
 </testcase>
-<testcase name="Search for Playwright" classname="src/tests/google/google.spec.ts" time="1.576">
+<testcase name="Search for Playwright" classname="src/tests/google/google.spec.ts" time="1.45">
 <system-out>
-<![CDATA[Screenshot saved as Screenshots/Google_1730293214370.png
+<![CDATA[Screenshot saved as Screenshots/Google_1730295689283.png
 Playwright - Google Search
 Playwright: Fast and reliable end-to-end testing for modern web apps
 
