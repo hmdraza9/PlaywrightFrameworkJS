@@ -1,23 +1,42 @@
-<testsuites id="" name="" tests="2" failures="0" skipped="0" errors="0" time="5.937442">
-<testsuite name="src/tests/google/google.spec.ts" timestamp="2024-10-30T13:41:23.881Z" hostname="" tests="2" failures="0" skipped="0" time="4.662" errors="0">
-<testcase name="Navigate to Google" classname="src/tests/google/google.spec.ts" time="3.212">
+<testsuites id="" name="" tests="3" failures="0" skipped="0" errors="0" time="20.293388">
+<testsuite name="src/tests/amazon/amazon.spec.ts" timestamp="2024-11-01T14:31:09.414Z" hostname="" tests="3" failures="0" skipped="0" time="19.19" errors="0">
+<testcase name="Navigate to Amazon.in" classname="src/tests/amazon/amazon.spec.ts" time="7.058">
 <system-out>
 <![CDATA[
-[[ATTACHMENT|test-results/src-tests-google-google-Navigate-to-Google/test-finished-1.png]]
+[[ATTACHMENT|test-results/src-tests-amazon-amazon-Navigate-to-Amazon-in/test-finished-1.png]]
 
-[[ATTACHMENT|test-results/src-tests-google-google-Navigate-to-Google/video.webm]]
+[[ATTACHMENT|test-results/src-tests-amazon-amazon-Navigate-to-Amazon-in/video.webm]]
 ]]>
 </system-out>
 </testcase>
-<testcase name="Search for Playwright" classname="src/tests/google/google.spec.ts" time="1.45">
+<testcase name="Search for iPhone" classname="src/tests/amazon/amazon.spec.ts" time="3.448">
 <system-out>
-<![CDATA[Screenshot saved as Screenshots/Google_1730295689283.png
-Playwright - Google Search
-Playwright: Fast and reliable end-to-end testing for modern web apps
+<![CDATA[
+[[ATTACHMENT|test-results/src-tests-amazon-amazon-Search-for-iPhone/test-finished-1.png]]
 
-[[ATTACHMENT|test-results/src-tests-google-google-Search-for-Playwright/test-finished-1.png]]
+[[ATTACHMENT|test-results/src-tests-amazon-amazon-Search-for-iPhone/video.webm]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Buy iPhone - Apple iPhone 13 (128GB) - Midnight" classname="src/tests/amazon/amazon.spec.ts" time="8.684">
+<system-out>
+<![CDATA[Apple iPhone 13 (128GB) - Midnight : Amazon.in: Electronics
+Page URL: https://www.amazon.in/Apple-iPhone-13-128GB-Midnight/dp/B09G9HD6PD/ref=sr_1_1?dib=eyJ2IjoiMSJ9.8h9A_YSPiLCsRbGj7EQ9tvoXh7Npjt_8lPipzK1gC5wQ58GILcmh3SqqOybZZw-XtB1O3cXk_z6ylV7g0UtiGxIRVN949AAnr8YKp_br__YdZ4yyq1s4yo_xO38vwCB8wYnblFv7udgWswAGsxBN8FhRuBLVXutuscMOWAghXriFgDRNqpw-l2wOahqe7i7uw6uEeBZ0XbbKrF68udkd6aT9dfJ09wWYWBrTfezFpMA.6RTq2UUYeRzhpvMhPCuZ4x2_gjNGjzakqvDVZnmU29E&dib_tag=se&keywords=iPhone&qid=1730471484&sr=8-1
+Product code: B09G9HD6PD
+Promise {
+  [36m<pending>[39m,
+  [[32mSymbol(async_id_symbol)[39m]: [33m87210[39m,
+  [[32mSymbol(trigger_async_id_symbol)[39m]: [33m86984[39m,
+  [[32mSymbol(kResourceStore)[39m]: [90mundefined[39m
+}
 
-[[ATTACHMENT|test-results/src-tests-google-google-Search-for-Playwright/video.webm]]
+[[ATTACHMENT|test-results/src-tests-amazon-amazon-Bu-e4e95--iPhone-13-128GB---Midnight/test-finished-1.png]]
+
+[[ATTACHMENT|test-results/src-tests-amazon-amazon-Bu-e4e95--iPhone-13-128GB---Midnight/test-finished-2.png]]
+
+[[ATTACHMENT|test-results/src-tests-amazon-amazon-Bu-e4e95--iPhone-13-128GB---Midnight/video-1.webm]]
+
+[[ATTACHMENT|test-results/src-tests-amazon-amazon-Bu-e4e95--iPhone-13-128GB---Midnight/video.webm]]
 ]]>
 </system-out>
 </testcase>
