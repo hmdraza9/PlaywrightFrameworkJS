@@ -18,15 +18,15 @@ export class AmazonClass{
       // Capture screenshot with a single timestamped filename
       const timestamp = Date.now();
       await page.screenshot({ path: `Screenshots/${name}_${timestamp}.png`, fullPage: true });
-      // console.log(`Screenshot saved as Amazon_${timestamp}.png`);
+      console.log(`Screenshot saved as Amazon_${timestamp}.png`);
       }
 
     async searchResult(expAmazonTitle: string){
       await this.page.waitForLoadState();
       await this.page.locator('//h2[contains(text(),"Results")]').waitFor();
+      this.takeScreenshot(this.page, "Amazon");
       await this.page.locator('//h2[contains(text(),"Results")]').textContent();
       
-      this.takeScreenshot(this.page, "Amazon");
 
 
       // Check if the page title contains "Amazon"
@@ -45,9 +45,9 @@ export class AmazonClass{
       
 
       await this.page.waitForLoadState();
-      const productLabelLocator = this.page.locator(`//h2/a/span[text()="${product}"]`);
+      const productLabelLocator = await this.page.locator(`//h2/a/span[text()="${product}"]`);
       const productName = await productLabelLocator.textContent();
-      // console.log(productName);
+      console.log(productName);
       const productLink = this.page.locator(`//h2/a/span[text()="${product}"]/parent::a`);
       // console.log(await productLink.getAttribute('href'));
 
