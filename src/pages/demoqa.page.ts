@@ -45,5 +45,57 @@ export class DemoQAClass{
 
     }
 
+
+    async executeProgressBar(){
+      await this.page.waitForLoadState();
+      const url = this.page.url();
+      expect(url).toContain('demoqa');
+      console.log(`Current URL: ${url}`);
+      await this.page.locator("button#startStopButton").click();
+      await this.page.waitForTimeout(500);
+      const progressPercElement = this.page.locator("div#progressBar>div");
+      const progressPerc = await progressPercElement.getAttribute("aria-valuenow");
+      console.log(`Progress percentage: ${progressPerc}`);
+
+      for(let i=0;i<5;i++){
+
+        await this.page.waitForTimeout(500);
+        const progressPerc = await progressPercElement.getAttribute("aria-valuenow");
+        const time = Date.now();
+        console.log(`Progress percentage: ${progressPerc}, time: ${time}`);
+
+      }
+
+    }
+    async selectStateCity(){
+      await this.page.locator('div.accordion>div:nth-child(2)').click();
+      await this.page.waitForLoadState();
+      await this.page.locator('//span[text()="Practice Form"]').click();
+      await this.page.waitForLoadState();
+      const url = this.page.url();
+      expect(url).toContain('demoqa');
+      console.log(`Current URL: ${url}`);
+      await this.page.locator('div#state').waitFor();
+      await this.page.locator('div#state').click();
+      await this.page.keyboard.type('NCR');
+      await this.page.keyboard.press('Enter');
+      await this.page.locator('div#city').waitFor();
+      await this.page.locator('div#city').click();
+      await this.page.keyboard.type('Delhi');
+      await this.page.keyboard.press('Enter');
+      await this.page.waitForLoadState();
+      await this.page.locator('button#submit').click();
+    }
+
+    async ddlFbdSite(){
+
+      await this.page.locator('select#est_code').waitFor();
+      await this.page.locator('select#est_code').selectOption({ label: 'District Court, Faridabad' });
+      await this.page.locator('select#est_code').selectOption({ label: 'Select Court Complex' });
+      await this.page.locator('select#est_code').selectOption({ label: 'District Court, Faridabad' });
+      await this.page.locator('select#est_code').selectOption({ label: 'Select Court Complex' });
+      await this.page.locator('select#est_code').selectOption({ label: 'District Court, Faridabad' });
+
+    }
     
 }
