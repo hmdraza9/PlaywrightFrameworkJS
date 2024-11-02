@@ -13,6 +13,6 @@ test('Search for Playwright', async ({ page }) => {
   await googletest.typeSearchText(searchTerm);
   await googletest.pressEnter();
   const text = await googletest.searchResult(searchTerm);
-  await console.log(text);
+  console.log(text);
   expect(text).toContain('Playwright: Fast and reliable');
 });
