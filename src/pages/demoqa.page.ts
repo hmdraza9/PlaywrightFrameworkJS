@@ -57,7 +57,7 @@ export class DemoQAClass{
       const progressPerc = await progressPercElement.getAttribute("aria-valuenow");
       console.log(`Progress percentage: ${progressPerc}`);
 
-      for(let i=0;i<22;i++){
+      for(let i=0;i<5;i++){
 
         await this.page.waitForTimeout(500);
         const progressPerc = await progressPercElement.getAttribute("aria-valuenow");
@@ -66,6 +66,25 @@ export class DemoQAClass{
 
       }
 
+    }
+    async selectStateCity(){
+      await this.page.locator('div.accordion>div:nth-child(2)').click();
+      await this.page.waitForLoadState();
+      await this.page.locator('//span[text()="Practice Form"]').click();
+      await this.page.waitForLoadState();
+      const url = this.page.url();
+      expect(url).toContain('demoqa');
+      console.log(`Current URL: ${url}`);
+      await this.page.locator('div#state').waitFor();
+      await this.page.locator('div#state').click();
+      await this.page.keyboard.type('NCR');
+      await this.page.keyboard.press('Enter');
+      await this.page.locator('div#city').waitFor();
+      await this.page.locator('div#city').click();
+      await this.page.keyboard.type('Delhi');
+      await this.page.keyboard.press('Enter');
+      await this.page.waitForLoadState();
+      await this.page.locator('button#submit').click();
     }
     
 }
