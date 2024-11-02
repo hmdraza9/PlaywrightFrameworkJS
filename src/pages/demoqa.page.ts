@@ -61,7 +61,8 @@ export class DemoQAClass{
 
         await this.page.waitForTimeout(500);
         const progressPerc = await progressPercElement.getAttribute("aria-valuenow");
-        console.log(`Progress percentage: ${progressPerc}`);
+        const time = Date.now();
+        console.log(`Progress percentage: ${progressPerc}, time: ${time}`);
 
       }
 
