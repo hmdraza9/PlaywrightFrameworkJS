@@ -86,5 +86,16 @@ export class DemoQAClass{
       await this.page.waitForLoadState();
       await this.page.locator('button#submit').click();
     }
+
+    async ddlFbdSite(){
+
+      await this.page.locator('select#est_code').waitFor();
+      await this.page.locator('select#est_code').selectOption({ label: 'District Court, Faridabad' });
+      await this.page.locator('select#est_code').selectOption({ label: 'Select Court Complex' });
+      await this.page.locator('select#est_code').selectOption({ label: 'District Court, Faridabad' });
+      await this.page.locator('select#est_code').selectOption({ label: 'Select Court Complex' });
+      await this.page.locator('select#est_code').selectOption({ label: 'District Court, Faridabad' });
+
+    }
     
 }

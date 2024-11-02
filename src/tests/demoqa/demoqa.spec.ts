@@ -27,7 +27,13 @@ import { DemoQAClass } from '../../pages/demoqa.page';
 
 test('Execute progress bar', async ({ page }) => {
   let demoqatest = new DemoQAClass(page);
-  await page.goto("https://demoqa.com/progress-bar");
+  await page.goto("https://demoqa.com/elements");
   await demoqatest.executeProgressBar();
   await demoqatest.selectStateCity();
+});
+
+test('Select element', async ({ page }) => {
+  let demoqatest = new DemoQAClass(page);
+  await page.goto("https://faridabad.dcourts.gov.in/case-status-search-by-case-number/");
+  demoqatest.ddlFbdSite();
 });
