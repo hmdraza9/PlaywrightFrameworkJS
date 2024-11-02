@@ -7,7 +7,8 @@ const config: PlaywrightTestConfig = defineConfig({
     browserName: 'chromium',             // Use Chromium as the browser
     headless: true,                     // Run tests in headed mode
     video: 'on',           // Record videos only on test failures
-    screenshot: 'on' 
+    screenshot: 'on',
+    viewport: null, // This will open the browser in fullscreen mode 
   },
   reporter: [
     ['junit', { outputFile: 'results.xml' }], // JUnit report for CI/CD integration

@@ -1,36 +1,38 @@
-<testsuites id="" name="" tests="3" failures="0" skipped="0" errors="0" time="19.510953">
-<testsuite name="src/tests/amazon/amazon.spec.ts" timestamp="2024-11-01T20:40:28.132Z" hostname="" tests="3" failures="0" skipped="0" time="18.337" errors="0">
-<testcase name="Navigate to Amazon.in" classname="src/tests/amazon/amazon.spec.ts" time="4.995">
+<testsuites id="" name="" tests="4" failures="0" skipped="0" errors="0" time="23.657934">
+<testsuite name="src/tests/demoqa/demoqa.spec.ts" timestamp="2024-11-02T04:41:47.815Z" hostname="" tests="4" failures="0" skipped="0" time="21.69" errors="0">
+<testcase name="Open demo site" classname="src/tests/demoqa/demoqa.spec.ts" time="3.419">
 <system-out>
 <![CDATA[
-[[ATTACHMENT|test-results/src-tests-amazon-amazon-Navigate-to-Amazon-in/test-finished-1.png]]
+[[ATTACHMENT|test-results/src-tests-demoqa-demoqa-Open-demo-site/test-finished-1.png]]
 
-[[ATTACHMENT|test-results/src-tests-amazon-amazon-Navigate-to-Amazon-in/video.webm]]
+[[ATTACHMENT|test-results/src-tests-demoqa-demoqa-Open-demo-site/video.webm]]
 ]]>
 </system-out>
 </testcase>
-<testcase name="Search for product - Apple iPhone 13 (128GB) - Midnight" classname="src/tests/amazon/amazon.spec.ts" time="3.664">
+<testcase name="Navigate to form practice page" classname="src/tests/demoqa/demoqa.spec.ts" time="9.391">
 <system-out>
 <![CDATA[
-[[ATTACHMENT|test-results/src-tests-amazon-amazon-Se-6324f--iPhone-13-128GB---Midnight/test-finished-1.png]]
+[[ATTACHMENT|test-results/src-tests-demoqa-demoqa-Navigate-to-form-practice-page/test-finished-1.png]]
 
-[[ATTACHMENT|test-results/src-tests-amazon-amazon-Se-6324f--iPhone-13-128GB---Midnight/video.webm]]
+[[ATTACHMENT|test-results/src-tests-demoqa-demoqa-Navigate-to-form-practice-page/video.webm]]
 ]]>
 </system-out>
 </testcase>
-<testcase name="Buy iPhone - Apple iPhone 13 (128GB) - Midnight" classname="src/tests/amazon/amazon.spec.ts" time="9.678">
+<testcase name="Verify page URL" classname="src/tests/demoqa/demoqa.spec.ts" time="5.178">
 <system-out>
-<![CDATA[Product code: B09G9HD6PD
-Product name: [object Promise]
-Delivery info:    FREE delivery Monday, 4 November. Details  Or fastest delivery Tomorrow, 3 November. Order within 21 hrs 49 mins. Details Arrives after Diwali. Need a gift sooner? Send an Amazon Pay Gift Card instantly. 
+<![CDATA[
+[[ATTACHMENT|test-results/src-tests-demoqa-demoqa-Verify-page-URL/test-finished-1.png]]
 
-[[ATTACHMENT|test-results/src-tests-amazon-amazon-Bu-e4e95--iPhone-13-128GB---Midnight/test-finished-1.png]]
+[[ATTACHMENT|test-results/src-tests-demoqa-demoqa-Verify-page-URL/video.webm]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Start fill form" classname="src/tests/demoqa/demoqa.spec.ts" time="3.702">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results/src-tests-demoqa-demoqa-Start-fill-form/test-finished-1.png]]
 
-[[ATTACHMENT|test-results/src-tests-amazon-amazon-Bu-e4e95--iPhone-13-128GB---Midnight/test-finished-2.png]]
-
-[[ATTACHMENT|test-results/src-tests-amazon-amazon-Bu-e4e95--iPhone-13-128GB---Midnight/video-1.webm]]
-
-[[ATTACHMENT|test-results/src-tests-amazon-amazon-Bu-e4e95--iPhone-13-128GB---Midnight/video.webm]]
+[[ATTACHMENT|test-results/src-tests-demoqa-demoqa-Start-fill-form/video.webm]]
 ]]>
 </system-out>
 </testcase>
