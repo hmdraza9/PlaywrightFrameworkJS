@@ -45,5 +45,26 @@ export class DemoQAClass{
 
     }
 
+
+    async executeProgressBar(){
+      await this.page.waitForLoadState();
+      const url = this.page.url();
+      expect(url).toContain('demoqa');
+      console.log(`Current URL: ${url}`);
+      await this.page.locator("button#startStopButton").click();
+      await this.page.waitForTimeout(500);
+      const progressPercElement = this.page.locator("div#progressBar>div");
+      const progressPerc = await progressPercElement.getAttribute("aria-valuenow");
+      console.log(`Progress percentage: ${progressPerc}`);
+
+      for(let i=0;i<22;i++){
+
+        await this.page.waitForTimeout(500);
+        const progressPerc = await progressPercElement.getAttribute("aria-valuenow");
+        console.log(`Progress percentage: ${progressPerc}`);
+
+      }
+
+    }
     
 }

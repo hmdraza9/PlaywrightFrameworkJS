@@ -1,0 +1,37 @@
+<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="23.551818">
+<testsuite name="src/tests/demoqa/demoqa.spec.ts" timestamp="2024-11-02T19:52:43.618Z" hostname="" tests="1" failures="0" skipped="0" time="22.018" errors="0">
+<testcase name="Execute progress bar" classname="src/tests/demoqa/demoqa.spec.ts" time="22.018">
+<system-out>
+<![CDATA[Current URL: https://demoqa.com/progress-bar
+Progress percentage: 5
+Progress percentage: 10
+Progress percentage: 15
+Progress percentage: 20
+Progress percentage: 25
+Progress percentage: 30
+Progress percentage: 35
+Progress percentage: 40
+Progress percentage: 46
+Progress percentage: 51
+Progress percentage: 56
+Progress percentage: 61
+Progress percentage: 66
+Progress percentage: 71
+Progress percentage: 76
+Progress percentage: 81
+Progress percentage: 86
+Progress percentage: 91
+Progress percentage: 96
+Progress percentage: 100
+Progress percentage: 100
+Progress percentage: 100
+Progress percentage: 100
+
+[[ATTACHMENT|test-results/src-tests-demoqa-demoqa-Execute-progress-bar/test-finished-1.png]]
+
+[[ATTACHMENT|test-results/src-tests-demoqa-demoqa-Execute-progress-bar/video.webm]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+</testsuites>
