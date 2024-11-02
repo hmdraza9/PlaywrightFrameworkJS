@@ -8,14 +8,12 @@ export class DemoQAClass{
 
 
     async openDemoSite(){
-      await this.page.goto('/');
       this.page.waitForLoadState();
-      const url = this.page.url();
     }
 
 
     async navigateFormPage(){
-      await this.page.goto('/automation-practice-form');
+      await this.page.goto('https://demoqa.com/automation-practice-form');
       this.page.waitForLoadState();
       const url = this.page.url();
     }

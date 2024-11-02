@@ -4,6 +4,7 @@ import { DemoQAClass } from '../../pages/demoqa.page';
 
 test('Open demo site', async ({ page }) => {
   let demoqatest = new DemoQAClass(page);
+  await page.goto('https://demoqa.com');
   await demoqatest.openDemoSite()
 });
 

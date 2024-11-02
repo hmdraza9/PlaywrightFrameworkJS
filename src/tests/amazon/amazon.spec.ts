@@ -5,7 +5,7 @@ import { AmazonClass } from '../../pages/amazon.page';
 const product = "Apple iPhone 13 (128GB) - Midnight";
 
 test('Navigate to Amazon.in', async ({ page }) => {
-  await page.goto('https://amazon.com/');
+  await page.goto('https://amazon.in/');
   const url = await page.url();
   expect(url).toContain('amazon');
 });
