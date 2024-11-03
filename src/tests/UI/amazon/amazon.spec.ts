@@ -1,6 +1,6 @@
 //amazon.spec.ts
 import { test, expect } from '@playwright/test';
-import { AmazonClass } from '../../pages/amazon.page';
+import { AmazonClass } from '../../../pages/amazon.page';
 
 const product = "Apple iPhone 13 (128GB) - Midnight";
 

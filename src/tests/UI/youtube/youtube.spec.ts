@@ -1,6 +1,6 @@
 //youtube.spec.ts
 import { test, expect } from '@playwright/test';
-import { YoutubeClass } from '../../pages/youtube.page';
+import { YoutubeClass } from '../../../pages/youtube.page';
 test('Navigate to YouTube', async ({ page }) => {
   await page.goto('https://www.youtube.com');
   const url = page.url();

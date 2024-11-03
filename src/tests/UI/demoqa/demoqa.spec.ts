@@ -1,6 +1,6 @@
 //demoqa.spec.ts
 import { test, expect } from '@playwright/test';
-import { DemoQAClass } from '../../pages/demoqa.page';
+import { DemoQAClass } from '../../../pages/demoqa.page';
 
 // test('Open demo site', async ({ page }) => {
 //   let demoqatest = new DemoQAClass(page);
