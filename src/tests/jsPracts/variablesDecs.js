@@ -1,3 +1,5 @@
+//https://www.w3schools.com/js/js_let.asp
+
 const name1 = "Nicks";
 
 console.log(name1);
@@ -33,3 +35,7 @@ function getFirstNull() {
 }
 
 console.log(getFirstNull(null, undefined, "First",1, 2, 3, null));
+
+m = 990;  //You can use the variable before it is declared
+console.log(`Value of m: ${m}`);
+var m;
