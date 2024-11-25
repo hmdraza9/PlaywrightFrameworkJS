@@ -24,7 +24,7 @@ console.log(`A: ${a}, should print 8`);
 
 a -=2;
 
-console.log(`A: ${a}, should print 6`);
+console.log(`A: ${a}, should print 6`); 
 
 a *=4;
 
