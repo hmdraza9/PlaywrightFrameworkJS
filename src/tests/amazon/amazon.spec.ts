@@ -5,11 +5,11 @@ import { beforeEach } from 'node:test';
 
 const product = "Apple iPhone 13 (128GB) - Midnight";
 
-beforeEach(() => {
+test.beforeEach(() => {
   console.log("Before test");
 });
 
-afterEach(() => {
+test.afterEach(() => {
   console.log("After test");
 });
 
