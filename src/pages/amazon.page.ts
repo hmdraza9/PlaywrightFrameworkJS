@@ -86,31 +86,15 @@ export class AmazonClass{
 
       //close current page and go back to main page
       await productPage2.close();
-      await this.page.waitForTimeout(5000);
       
       const productCount: number = (await this.page.locator('//h2/a/span[contains(text(),"Apple iPhone 13 (128GB) - ")]').all()).length;
       console.log("Count: "+productCount);
 
       let products = await this.page.locator('//h2/a/span[contains(text(),"Apple iPhone 13 (128GB) - ")]').all();
-      for(let index in products){
-        let prName = await products[index].textContent();
+      for(let product of products){
+        let prName = await product.textContent();
         console.log("Product name: "+prName);
       }
-
-      let arr = [1, 2, 3, 4, 5];
-      for (let index in arr) {
-        console.log(arr[index]);
-      }
-
-
-
-
-//
-//      async getElementCount(): Promise<void> {
-//          const elementCount: number = await this.page.locator('textarea[name="q"]').all().count();
-//          console.log("Element count: " + elementCount);
-//      }
-
 
     }
 
