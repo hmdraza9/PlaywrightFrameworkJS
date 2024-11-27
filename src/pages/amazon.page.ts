@@ -92,10 +92,10 @@ export class AmazonClass{
       console.log("Count: "+productCount);
 
       let products = await this.page.locator('//h2/a/span[contains(text(),"Apple iPhone 13 (128GB) - ")]').all();
-
-      // products.forEach(element) => {
-      //   console.log(element.textContent());
-      // });
+      for(let index in products){
+        let prName = await products[index].textContent();
+        console.log("Product name: "+prName);
+      }
 
       let arr = [1, 2, 3, 4, 5];
       for (let index in arr) {

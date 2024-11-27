@@ -22,7 +22,7 @@ test(`Buy iPhone - ${product}`, async ({ page, context }) => {
   await page.goto('https://amazon.in/');
   await page.evaluate(() => {
   window.moveTo(0,0);
-  window.moveTo(screen.width,screen.height);
+  window.moveTo(1920,1243);
   });
   let amazontest = new AmazonClass(page);
   await amazontest.typeSearchText();
