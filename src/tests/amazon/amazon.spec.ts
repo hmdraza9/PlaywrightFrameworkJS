@@ -1,8 +1,17 @@
 //amazon.spec.ts
 import { test, expect } from '@playwright/test';
 import { AmazonClass } from '../../pages/amazon.page';
+import { beforeEach } from 'node:test';
 
 const product = "Apple iPhone 13 (128GB) - Midnight";
+
+beforeEach(() => {
+  console.log("Before test");
+});
+
+afterEach(() => {
+  console.log("After test");
+});
 
 test('Navigate to Amazon.in', async ({ page }) => {
   await page.goto('https://amazon.in/');
