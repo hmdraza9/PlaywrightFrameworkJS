@@ -69,7 +69,7 @@ export class AmazonClass{
       
       await productPage.locator("span#productTitle").waitFor();
 
-      const productLable = productPage.locator("span#productTitle").textContent();
+      const productLable = await productPage.locator("span#productTitle").textContent();
 
       console.log(`Product name: ${productLable}`);
 
@@ -91,10 +91,14 @@ export class AmazonClass{
       console.log("Count: "+productCount);
 
       let products = await this.page.locator('//h2/a/span[contains(text(),"Apple iPhone 13 (128GB) - ")]').all();
+      let productsLabel: any = [];
       for(let product of products){
         let prName = await product.textContent();
         console.log("Product name: "+prName);
+        productsLabel.push(prName);
       }
+
+      console.log("Product names: "+productsLabel);
 
     }
 
