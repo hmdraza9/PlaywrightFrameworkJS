@@ -20,6 +20,10 @@ test(`Search for product - ${product}`, async ({ page }) => {
 test(`Buy iPhone - ${product}`, async ({ page, context }) => {
   const expAmazonTitle = "Amazon.in : iPhone";
   await page.goto('https://amazon.in/');
+  await page.evaluate(() => {
+  window.moveTo(0,0);
+  window.moveTo(screen.width,screen.height);
+  });
   let amazontest = new AmazonClass(page);
   await amazontest.typeSearchText();
   await amazontest.pressEnter();

@@ -23,4 +23,6 @@ test('Search for Playwright', async ({ page }) => {
   const text = await googletest.searchResult(searchTerm);
   console.log(text);
   expect(text).toContain('Playwright: Fast and reliable');
+
+
 });

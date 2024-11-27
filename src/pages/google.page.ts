@@ -12,17 +12,17 @@ export class GoogleClass{
             return this.i;
         }
     
-    async typeSearchText(searchTerm){
+    async typeSearchText(searchTerm: any){
        await this.page.type('textarea[name="q"]',searchTerm)
     }
     async pressEnter(){
        await this.page.keyboard.press('Enter');
     }
-    async searchResult(searchTerm){
+    async searchResult(searchTerm: any){
       this.page.waitForLoadState();
       let fileName = `Screenshots/Google_${Date.now()+"_"+this.getNumber()}.png`;
-      await this.page.screenshot({ path: fileName, fullPage: true });           //full screen
-      fileName = `Screenshots/Google_${Date.now()+"_"+this.getNumber()}.png`;   // no fullscreen
+      await this.page.screenshot({ path: fileName, fullPage: true });           //full screen snap
+      fileName = `Screenshots/Google_${Date.now()+"_"+this.getNumber()}.png`;   // no fullscreen snap
       await this.page.screenshot({ path: fileName, fullPage: false });
       console.log(`Screenshot saved as ${fileName}`);
       const title = await this.page.locator("//title").textContent();
@@ -34,11 +34,6 @@ export class GoogleClass{
        path: `Screenshots/Google_Masked_${Date.now()+"_"+this.getNumber()}.png`,
        mask: [this.page.locator('textarea[name="q"]')]
      });
-//
-//      async getElementCount(): Promise<void> {
-//          const elementCount: number = await this.page.locator('textarea[name="q"]').all().count();
-//          console.log("Element count: " + elementCount);
-//      }
 
 
 
@@ -66,10 +61,17 @@ export class GoogleClass{
           quality: 100,
           type: 'jpeg'
        });
+     //waiting for 5000ms
+      console.log("Start:"+Date.now());
+      await this.page.waitForTimeout(5000);
+      console.log("End:  "+Date.now());
 
       console.log(title);
       const expTitle = `${searchTerm} - Google Search`;
       expect(title).toContain(expTitle);
       return this.page.innerText('//h3[contains(text(),"Playwright:")]');
+
+
+
     }
 }

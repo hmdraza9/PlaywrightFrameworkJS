@@ -42,14 +42,11 @@ export class AmazonClass{
         return match ? match[1] : null;
       }
 
-      
-
       await this.page.waitForLoadState();
-      const productLabelLocator = await this.page.locator(`//h2/a/span[text()="${product}"]`);
+      const productLabelLocator = this.page.locator(`//h2/a/span[text()="${product}"]`);
       const productName = await productLabelLocator.textContent();
       console.log(productName);
       const productLink = this.page.locator(`//h2/a/span[text()="${product}"]/parent::a`);
-      // console.log(await productLink.getAttribute('href'));
 
       const [productPage] = await Promise.all([
 
@@ -57,11 +54,12 @@ export class AmazonClass{
 
       ]);
 
+
       await productPage.waitForLoadState();
-      
-      // console.log(await productPage.title());
+      const prdTitle = await productPage.title();
+      console.log("Product page title: "+prdTitle);
       const productPageUrl = productPage.url();
-      // console.log(`Page URL: ${productPageUrl}`);
+      console.log(`Page URL: ${productPageUrl}`);
 
       const productCode = getProductCode(productPageUrl);
 
@@ -78,6 +76,40 @@ export class AmazonClass{
       const deliveryInfo = await productPage.locator("div#deliveryBlockMessage").textContent();
 
       console.log(`Delivery info: ${deliveryInfo}`);
+      await this.page.waitForTimeout(5000);
+      const [productPage2] = await Promise.all([
+        context.waitForEvent('page'), productLink.click()
+    ]);
+    await productPage.waitForTimeout(5000);
+      await productPage.close();
+      await this.page.waitForTimeout(5000);
+
+      //close current page and go back to main page
+      await productPage2.close();
+      await this.page.waitForTimeout(5000);
+      
+      const productCount: number = (await this.page.locator('//h2/a/span[contains(text(),"Apple iPhone 13 (128GB) - ")]').all()).length;
+      console.log("Count: "+productCount);
+
+      let products = await this.page.locator('//h2/a/span[contains(text(),"Apple iPhone 13 (128GB) - ")]').all();
+
+      // products.forEach(element) => {
+      //   console.log(element.textContent());
+      // });
+
+      let arr = [1, 2, 3, 4, 5];
+      for (let index in arr) {
+        console.log(arr[index]);
+      }
+
+
+
+
+//
+//      async getElementCount(): Promise<void> {
+//          const elementCount: number = await this.page.locator('textarea[name="q"]').all().count();
+//          console.log("Element count: " + elementCount);
+//      }
 
 
     }
