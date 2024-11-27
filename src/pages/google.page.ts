@@ -34,6 +34,13 @@ export class GoogleClass{
        path: `Screenshots/Google_Masked_${Date.now()+"_"+this.getNumber()}.png`,
        mask: [this.page.locator('textarea[name="q"]')]
      });
+//
+//      async getElementCount(): Promise<void> {
+//          const elementCount: number = await this.page.locator('textarea[name="q"]').all().count();
+//          console.log("Element count: " + elementCount);
+//      }
+
+
 
         // Controlled quality/size of screenshots
       await this.page.screenshot({

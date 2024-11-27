@@ -26,4 +26,31 @@ test('Execute API in PW', async ({ page }) => {
     console.log("Street: "+users[1].address.street);
     console.log("Suite: "+users[1].address.suite);
     console.log("City: "+users[1].address.city);
+
+
+});
+test('Practice Promise in JS', async ({ page }) => {
+    console.log("Start:", Date.now());
+
+    const myPromise = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            const success = false; // Change to true or false to test both paths
+            if (success) {
+                resolve("Task completed successfully!");
+                console.log("Inside Promise: Task completed successfully!");
+            } else {
+                reject("Task failed");
+                console.log("Inside Promise: Task failed!");
+            }
+        }, 7000);
+    });
+
+    try {
+        const result = await myPromise; // Await the promise
+        console.log(result); // Logs: "Task completed successfully!" after 2 seconds
+    } catch (error) {
+        console.error(error); // Logs: "Task failed" if rejected
+    }
+
+    console.log("End:  ", Date.now());
 });
