@@ -1,16 +1,12 @@
 //google.page.ts
 import { expect, type Page } from  '@playwright/test';
+import { UtilClass } from '../Utils/utils';
 export class GoogleClass{
     readonly page: Page;
-    private i: number = 0;
+    private i: number = 1;
     constructor(page:Page){
         this.page=page
     }
-
-    private getNumber(){
-            this.i +=1;
-            return this.i;
-        }
     
     async typeSearchText(searchTerm: any){
        await this.page.type('textarea[name="q"]',searchTerm)
@@ -19,19 +15,20 @@ export class GoogleClass{
        await this.page.keyboard.press('Enter');
     }
     async searchResult(searchTerm: any){
+      let util = new UtilClass();
       this.page.waitForLoadState();
-      let fileName = `Screenshots/Google_${Date.now()+"_"+this.getNumber()}.png`;
-      await this.page.screenshot({ path: fileName, fullPage: true });           //full screen snap
-      fileName = `Screenshots/Google_${Date.now()+"_"+this.getNumber()}.png`;   // no fullscreen snap
+      let fileName = "";
+      await this.page.screenshot({ path: util.getCustomName("Google", this.i++), fullPage: true });           //full screen snap
+      fileName = `Screenshots/Google_${Date.now()+"_"+(this.i++)}.png`;   // no fullscreen snap
       await this.page.screenshot({ path: fileName, fullPage: false });
       console.log(`Screenshot saved as ${fileName}`);
       const title = await this.page.locator("//title").textContent();
 
-     await this.page.locator("textarea[name='q']").screenshot({ path: `Screenshots/Google_${Date.now()+"_"+this.getNumber()}.png` }); //Element level screenshot
+     await this.page.locator("textarea[name='q']").screenshot({ path: `Screenshots/Google_${Date.now()+"_"+(this.i++)}.png` }); //Element level screenshot
 
      //Mask sensitive info element, applies a strip of pink colour to element, that's it:
      await this.page.screenshot({
-       path: `Screenshots/Google_Masked_${Date.now()+"_"+this.getNumber()}.png`,
+       path: `Screenshots/Google_Masked_${Date.now()+"_"+(this.i++)}.png`,
        mask: [this.page.locator('textarea[name="q"]')]
      });
 
@@ -39,25 +36,25 @@ export class GoogleClass{
 
         // Controlled quality/size of screenshots
       await this.page.screenshot({
-          path: `Screenshots/Google_quality_1_${Date.now()+"_"+this.getNumber()}.png`,
+          path: util.getCustomName("Google_quality_1_",this.i++),
           quality: 1,
           type: 'jpeg'
        });
 
       await this.page.screenshot({
-          path: `Screenshots/Google_quality_33_${Date.now()+"_"+this.getNumber()}.png`,
+        path: util.getCustomName("Google_quality_33_",this.i++),
           quality: 33,
           type: 'jpeg'
        });
 
       await this.page.screenshot({
-          path: `Screenshots/Google_quality_66_${Date.now()+"_"+this.getNumber()}.png`,
+        path: util.getCustomName("Google_quality_66_",this.i++),
           quality: 66,
           type: 'jpeg'
        });
 
       await this.page.screenshot({
-          path: `Screenshots/Google_quality_100_${Date.now()+"_"+this.getNumber()}.png`,
+        path: util.getCustomName("Google_quality_100",this.i++),
           quality: 100,
           type: 'jpeg'
        });
@@ -70,8 +67,6 @@ export class GoogleClass{
       const expTitle = `${searchTerm} - Google Search`;
       expect(title).toContain(expTitle);
       return this.page.innerText('//h3[contains(text(),"Playwright:")]');
-
-
 
     }
 }
