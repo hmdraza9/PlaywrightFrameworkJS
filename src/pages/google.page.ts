@@ -17,18 +17,15 @@ export class GoogleClass{
     async searchResult(searchTerm: any){
       let util = new UtilClass();
       this.page.waitForLoadState();
-      let fileName = "";
-      await this.page.screenshot({ path: util.getCustomName("Google", this.i++), fullPage: true });           //full screen snap
-      fileName = `Screenshots/Google_${Date.now()+"_"+(this.i++)}.png`;   // no fullscreen snap
-      await this.page.screenshot({ path: fileName, fullPage: false });
-      console.log(`Screenshot saved as ${fileName}`);
+      await this.page.screenshot({ path: util.getCustomName("Google_", this.i++), fullPage: true });           //full screen snap
+      await this.page.screenshot({ path: util.getCustomName("Google_viewPort_",this.i++), fullPage: false });
       const title = await this.page.locator("//title").textContent();
 
-     await this.page.locator("textarea[name='q']").screenshot({ path: `Screenshots/Google_${Date.now()+"_"+(this.i++)}.png` }); //Element level screenshot
+     await this.page.locator("textarea[name='q']").screenshot({ path: util.getCustomName("Google_Element_scr_", this.i++) }); //Element level screenshot
 
      //Mask sensitive info element, applies a strip of pink colour to element, that's it:
      await this.page.screenshot({
-       path: `Screenshots/Google_Masked_${Date.now()+"_"+(this.i++)}.png`,
+       path: util.getCustomName("Google_mask_", this.i++),
        mask: [this.page.locator('textarea[name="q"]')]
      });
 

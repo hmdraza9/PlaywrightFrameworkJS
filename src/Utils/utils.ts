@@ -1,5 +1,3 @@
-import { test, expect } from '@playwright/test';
-
 export class UtilClass{
     constructor(){
     }
@@ -7,10 +5,6 @@ export class UtilClass{
 
 
     getCustomName(name:string, i:number){
-        return `Screenshots/${name+"_"+(this.i++)+"_"+(i)}.png`
+        return `Screenshots/${name+Date.now()+(this.i++)}.png`
     }
 }
-
-//       path: `Screenshots/Google_Masked_${Date.now()+"_"+(this.i++)}.png`,
-
-
