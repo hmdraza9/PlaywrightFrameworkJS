@@ -1,8 +1,8 @@
 //DemoQAClass.page.ts
-import { expect, type Page } from  '@playwright/test';
+import { expect } from  '@playwright/test';
 export class DemoQAClass{
-    readonly page: Page
-    constructor(page:Page){
+    page
+    constructor(page){
         this.page=page
     }
 
@@ -15,7 +15,6 @@ export class DemoQAClass{
     async navigateFormPage(){
       await this.page.goto('https://demoqa.com/automation-practice-form');
       this.page.waitForLoadState();
-      const url = this.page.url();
     }
 
 
@@ -51,6 +50,8 @@ export class DemoQAClass{
       const url = this.page.url();
       expect(url).toContain('demoqa');
       console.log(`Current URL: ${url}`);
+      await this.page.locator("//*[text()='Widgets']/parent::*/parent::*").click();
+      await this.page.locator("//*[text()='Progress Bar']/parent::*").click();
       await this.page.locator("button#startStopButton").click();
       await this.page.waitForTimeout(500);
       const progressPercElement = this.page.locator("div#progressBar>div");

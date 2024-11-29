@@ -1,8 +1,7 @@
 //amazon.page.ts
-import { BrowserContext, expect, type Page } from  '@playwright/test';
+import { expect } from  '@playwright/test';
 export class AmazonClass{
-    readonly page: Page
-    constructor(page:Page){
+    constructor(page){
         this.page=page
     }
     async typeSearchText(){
@@ -13,7 +12,7 @@ export class AmazonClass{
     }
 
     
-    async takeScreenshot(page: Page, name: string){
+    async takeScreenshot(page, name){
 
       // Capture screenshot with a single timestamped filename
       const timestamp = Date.now();
@@ -21,7 +20,7 @@ export class AmazonClass{
       console.log(`Screenshot saved as Amazon_${timestamp}.png`);
       }
 
-    async searchResult(expAmazonTitle: string){
+    async searchResult(expAmazonTitle){
       await this.page.waitForLoadState();
       await this.page.locator('//h2[contains(text(),"Results")]').waitFor();
       this.takeScreenshot(this.page, "Amazon");
@@ -34,9 +33,9 @@ export class AmazonClass{
       expect(title).toBe(expAmazonTitle);
       
     }
-    async buyProduct(context: BrowserContext, product: string){
+    async buyProduct(context, product){
 
-      function getProductCode(url: string) {
+      function getProductCode(url) {
         // Use a regular expression to match the ASIN pattern after "/dp/"
         const match = url.match(/\/dp\/([A-Z0-9]{10})/);
         return match ? match[1] : null;
@@ -82,16 +81,15 @@ export class AmazonClass{
     ]);
     await productPage.waitForTimeout(5000);
       await productPage.close();
-      await this.page.waitForTimeout(5000);
 
       //close current page and go back to main page
       await productPage2.close();
       
-      const productCount: number = (await this.page.locator('//h2/a/span[contains(text(),"Apple iPhone 13 (128GB) - ")]').all()).length;
+      const productCount = (await this.page.locator('//h2/a/span[contains(text(),"Apple iPhone 13 (128GB) - ")]').all()).length;
       console.log("Count: "+productCount);
 
       let products = await this.page.locator('//h2/a/span[contains(text(),"Apple iPhone 13 (128GB) - ")]').all();
-      let productsLabel: any = [];
+      let productsLabel = [];
       for(let product of products){
         let prName = await product.textContent();
         console.log("Product name: "+prName);

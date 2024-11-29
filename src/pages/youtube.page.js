@@ -1,8 +1,7 @@
 //youtube.page.ts
-import { expect, type Page } from  '@playwright/test';
+import { expect } from  '@playwright/test';
 export class YoutubeClass{
-    readonly page: Page
-    constructor(page:Page){
+    constructor(page){
         this.page=page
     }
     async typeSearchText(){

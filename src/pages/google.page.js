@@ -1,22 +1,22 @@
 //google.page.ts
-import { expect, type Page } from  '@playwright/test';
+import { expect } from  '@playwright/test';
 import { UtilClass } from '../Utils/utils';
 export class GoogleClass{
-    readonly page: Page;
-    private i: number = 1;
-    private util:UtilClass;
-    constructor(page:Page){
+    page;
+    i = 1;
+    util;
+    constructor(page){
         this.page=page,
         this.util = new UtilClass();
     }
     
-    async typeSearchText(searchTerm: any){
+    async typeSearchText(searchTerm){
        await this.page.type('textarea[name="q"]',searchTerm)
     }
     async pressEnter(){
        await this.page.keyboard.press('Enter');
     }
-    async searchResult(searchTerm: any){
+    async searchResult(searchTerm){
       this.page.waitForLoadState();
       await this.page.screenshot({ path: this.util.getCustomName("Google_", this.i++), fullPage: true });           //full screen snap
       await this.page.screenshot({ path: this.util.getCustomName("Google_viewPort_",this.i++), fullPage: false });
