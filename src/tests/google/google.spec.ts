@@ -1,7 +1,7 @@
 //google.spec.ts
 import { test, expect } from '@playwright/test';
 import { GoogleClass } from '../../pages/google.page';
-const { chromium } = require('playwright');
+import { chromium } from 'playwright';
 
 let googletest: GoogleClass;
 
