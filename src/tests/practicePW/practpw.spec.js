@@ -1,4 +1,6 @@
-const { test, expect } = require('@playwright/test');
+const { test, expect, chromium } = require('@playwright/test');
+import { UtilClass } from '../../Utils/utils';
+const XLSX = require('xlsx'); // Importing the xlsx library
 
 const getAllUsers = async (page) => {
     const response = await page.request.get('https://jsonplaceholder.typicode.com/users');
@@ -11,6 +13,7 @@ const getAllTodos = async (page) => {
 };
 
 test('Execute API in PW', async ({ page }) => {
+
     const users = await getAllUsers(page);
     console.log("Users data:", users.length); // Logging users to check the response.
     const todos = await getAllTodos(page);
@@ -74,3 +77,47 @@ test('Practice Promise in JS', async ({ page }) => {
 
     console.log("End:  ", Date.now());
 });
+
+
+test('Concurrent page navigation', async () => {
+    const browser = await chromium.launch();
+    const context = await browser.newContext();
+
+    const page1 = await context.newPage();
+    const page2 = await context.newPage();
+    const page3 = await context.newPage();
+
+    await Promise.all([
+        page1.goto('https://yahoo.com'),
+        page2.goto('https://google.com'),
+        page3.goto('https://bing.com'),
+        page1.screenshot({path: "aa/123.png", fullPage: true}),
+        page2.screenshot({path: "aa/234.png", fullPage: true}),
+        page3.screenshot({path: "aa/345.png", fullPage: true})
+    ]);
+
+    console.log('All pages loaded');
+    await browser.close();
+});
+
+ // Function to simulate printing numbers with a delay
+ const printNumbers = async (id) => {
+     for (let i = 1; i <= 100; i++) {
+         console.log(`Promise ${id} - Number: ${i}`);
+        const randomDelay = Math.floor(Math.random() * (250 - 150 + 1)) + 150;
+         await new Promise(resolve => setTimeout(resolve, randomDelay)); // Wait 200ms
+     }
+ };
+
+ // Test method to run 3 promises concurrently
+ test('Test multiple promises with concurrency', async () => {
+     const promise1 = printNumbers(1);
+     const promise2 = printNumbers(2);
+     const promise3 = printNumbers(3);
+
+     // Using Promise.all to run all promises concurrently
+     await Promise.all([promise1, promise2, promise3]);
+
+     console.log('All promises completed');
+ });
+
