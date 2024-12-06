@@ -16,6 +16,17 @@ test('Execute API in PW', async ({ page }) => {
     const todos = await getAllTodos(page);
     console.log("Todos data:", todos.length); // Logging todos to check the response.
 
+    //print todos where title contains 'commodi'
+    let i=0;
+    const keyWord = "commodi";
+    while(i<todos.length){
+        if(todos[i].title.includes(keyWord)){
+            console.log(`Title with text '${keyWord}' `+todos[i].title);
+            }
+            i++;
+        }
+//    }
+
     // Example: Check that the users array has some data.
     expect(users.length).toBeGreaterThan(0); // Ensure users data is returned.
 
@@ -29,6 +40,7 @@ test('Execute API in PW', async ({ page }) => {
 
 
 });
+
 test('Practice Promise in JS', async ({ page }) => {
     console.log("Start:", Date.now());
 
