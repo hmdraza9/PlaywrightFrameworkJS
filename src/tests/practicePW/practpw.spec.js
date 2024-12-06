@@ -25,6 +25,14 @@ test('Execute API in PW', async ({ page }) => {
             }
             i++;
         }
+        i = 0;
+
+    while(i<todos.length){
+        if(todos[i].completed==true){
+            console.log("Todo with completed = true: "+todos[i].title+", completed = "+todos[i].completed+", Task Id: "+todos[i].id);
+            }
+            i++;
+        }
 //    }
 
     // Example: Check that the users array has some data.
