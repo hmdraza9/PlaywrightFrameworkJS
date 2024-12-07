@@ -29,11 +29,12 @@ test("Open multiple contexts and pages", async () => {
 
     // Create pages in each context
     const page1 = await context1.newPage();
-    const page2 = await context2.newPage();
+//    const page2 = await context2.newPage();
 
     // Navigate both pages to Google
     await page1.goto("http://www.google.com");
-    await page2.goto("http://www.google.com");
+//    await page2.goto("http://www.google.com");
+    await page1.getByRole('button', { name: "I'm Feeling Lucky" }).click();
 
     // Add any assertions or interactions here
     console.log("Both pages navigated successfully!");
