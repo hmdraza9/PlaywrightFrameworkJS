@@ -21,7 +21,7 @@ const XLSX = require('xlsx'); // Importing the xlsx library
 
 test("Open multiple contexts and pages", async () => {
     // Launch the browser
-    const browser = await chromium.launch({ headless: false }); // Set headless to false for debugging
+    const browser = await chromium.launch(); // Set headless to false for debugging
 
     // Create two browser contexts
     const context1 = await browser.newContext();
