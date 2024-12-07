@@ -91,9 +91,9 @@ test('Concurrent page navigation', async () => {
         page1.goto('https://yahoo.com'),
         page2.goto('https://google.com'),
         page3.goto('https://bing.com'),
-        page1.screenshot({path: "aa/123.png", fullPage: true}),
-        page2.screenshot({path: "aa/234.png", fullPage: true}),
-        page3.screenshot({path: "aa/345.png", fullPage: true})
+        page1.screenshot({path: "Screenshots/123.png", fullPage: true}),
+        page2.screenshot({path: "Screenshots/234.png", fullPage: true}),
+        page3.screenshot({path: "Screenshots/345.png", fullPage: true})
     ]);
 
     console.log('All pages loaded');
