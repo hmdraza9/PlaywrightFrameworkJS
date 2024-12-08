@@ -2,7 +2,10 @@
 const { defineConfig } = require('@playwright/test');
 
 const config = defineConfig({
+    timeout: 30*1000,
   use: {
+    actionTimeout: 10000, // Timeout for each Playwright action (10 seconds)
+    navigationTimeout: 15000, // Timeout for navigation actions (15 seconds)
     baseURL: process.env.BASE_URL || 'http://google.com', // Set the base URL for tests
     // Execute using this - 'BASE_URL=https://www.google.com npx playwright test google --headed'
     browserName: 'chromium',         // Use Chromium as the browser
