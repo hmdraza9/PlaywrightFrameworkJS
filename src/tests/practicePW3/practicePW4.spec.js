@@ -13,7 +13,11 @@ test("Demo tests", async({page, browser, context, request, browserName, baseURL}
     console.log("in test");
 //    await page.goto("https://demoqa.com/automation-practice-form");
     await page.goto("https://the-internet.herokuapp.com/");
-    await page.locator("text=Form Authentication").click();
+    const linkPH = (linkName) => `text=${linkName}`;
+    await page.locator(linkPH('Form Authentication')).highlight();
+    await page.waitForTimeout(2323);
+    await page.locator(linkPH('Form Authentication')).click();
+//    await page.locator("text=Form Authentication").click();
     await page.locator('input[type="text"]').fill("admin");
     await page.locator('button[type="submit"]').click();
     await page.locator('input[type="text"]').fill("ADMIN");
@@ -33,7 +37,11 @@ test("Demo tests", async({page, browser, context, request, browserName, baseURL}
 //    await page.pause();
     await page.goBack({waitUntil: 'load'});
     await page.goto("https://the-internet.herokuapp.com/");
+    await page.waitForTimeout(10000);
+    //using regex in finding the locator
     await expect(await page.locator('text=/.*ge & Deep.*/')).toBeVisible();
+    await expect(await page.locator('text=/Large & Deep D.?M/i')).toBeVisible();
+    await page.goBack({waitUntil: 'load'});
 });
 
 //test("Practice all locators in Playwright", async({page}) => {

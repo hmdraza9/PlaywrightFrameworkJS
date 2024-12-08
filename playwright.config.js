@@ -2,7 +2,7 @@
 const { defineConfig } = require('@playwright/test');
 
 const config = defineConfig({
-    timeout: 30*1000,
+    timeout: 40*1000,
   use: {
     actionTimeout: 10000, // Timeout for each Playwright action (10 seconds)
     navigationTimeout: 15000, // Timeout for navigation actions (15 seconds)
