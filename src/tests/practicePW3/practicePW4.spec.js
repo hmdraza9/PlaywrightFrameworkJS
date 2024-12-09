@@ -1,9 +1,29 @@
 const {expect, test} = require('playwright/test');
 
-test.use({ browserName: 'chromium' });
+
+const extendedTest = test.extend({
+    testData: async({}, use) => {
+    const data = {
+    username: 'admin',
+    password: 'password',
+    };
+        await use(data);
+    },
+});
+
+extendedTest.use({ browserName: 'chromium' });
+
+  extendedTest.beforeEach(async ({ page, testData }) => {
+  console.log("Opening google.com");
+  console.log("testData.username: "+testData.username);
+  console.log("testData.password: "+testData.password);
+    await page.goto('https://google.com/login');
+  });
 
 
-test("Demo tests", async({page, browser, context, request, browserName, baseURL}) => {
+extendedTest("Demo tests", async({testData, page, browser, context, request, browserName, baseURL}) => {
+  console.log("testData.username: "+testData.username);
+  console.log("testData.password: "+testData.password);
     console.log("page: "+page);
     console.log("browser: "+browser);
     console.log("context: "+context);
@@ -42,11 +62,5 @@ test("Demo tests", async({page, browser, context, request, browserName, baseURL}
     await expect(await page.locator('text=/.*ge & Deep.*/')).toBeVisible();
     await expect(await page.locator('text=/Large & Deep D.?M/i')).toBeVisible();
     await page.goBack({waitUntil: 'load'});
+
 });
-
-//test("Practice all locators in Playwright", async({page}) => {
-//    console.log("in test");
-//    await page.goto("https://www.google.com");
-//    await page.goto("https://demoqa.com/automation-practice-form");
-//});
-
