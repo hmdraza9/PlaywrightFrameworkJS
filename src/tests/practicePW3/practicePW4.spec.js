@@ -11,7 +11,7 @@ const extendedTest = test.extend({
     },
 });
 
-extendedTest.use({ browserName: 'chromium' });
+//extendedTest.use({ browserName: 'chromium' });
 
   extendedTest.beforeEach(async ({ page, testData }) => {
   console.log("Opening google.com");
