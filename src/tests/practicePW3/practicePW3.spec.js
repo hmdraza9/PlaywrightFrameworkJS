@@ -4,25 +4,25 @@ test.use({
     browserName: "chromium",
 })
 
-// test("Practice all locators in Playwright", async({page}) => {
-//    console.log("in test");
-//    await page.goto("https://www.google.com");
-//    await page.goto("https://demoqa.com/automation-practice-form");
-// });
+test("Practice all locators in Playwright", async({page}) => {
+   console.log("in test");
+   await page.goto("https://www.google.com");
+   await page.goto("https://demoqa.com/automation-practice-form");
+});
 
-// test("Test file upload", async({page}) =>{
-//     await page.goto("https://commitquality.com/practice-file-upload");
-//     const handle = page.locator("input[type=file]");
+test("Test file upload", async({page}) =>{
+    await page.goto("https://commitquality.com/practice-file-upload");
+    const handle = page.locator("input[type=file]");
 
 
-//     await handle.setInputFiles("/Users/hmdraza9/Documents/GitClones/PlaywrightFrameworkJS/README.md");
-//     page.once("dialog", (dialog) =>{
-//         console.log(dialog.message());
-//         dialog.accept();
-//     });
+    await handle.setInputFiles("/Users/hmdraza9/Documents/GitClones/PlaywrightFrameworkJS/README.md");
+    page.once("dialog", (dialog) =>{
+        console.log(dialog.message());
+        dialog.accept();
+    });
 
-//     await page.getByText('Submit').click();
-// });
+    await page.getByText('Submit').click();
+});
 
 test("File downloading", async ({ page }) => {
 
@@ -39,6 +39,6 @@ test("File downloading", async ({ page }) => {
     await page.waitForTimeout(3333);
 
     // Save the downloaded file
-    await download.saveAs("./Downloads/it-downloaded");
+    await download.saveAs("./Downloads/newFile-downloaded");
     await page.waitForTimeout(3333);
 });
