@@ -42,7 +42,7 @@ export class AmazonClass{
       }
 
       await this.page.waitForLoadState();
-      const productLabelLocator = this.page.locator(`//h2/a/span[text()="${product}"]`);
+      const productLabelLocator = this.page.locator(`//h2//span[text()="${product}"]`);
       const productName = await productLabelLocator.textContent();
       console.log(productName);
       const productLink = this.page.locator(`//h2/a/span[text()="${product}"]/parent::a`);
