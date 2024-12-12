@@ -1,4 +1,5 @@
-const {expect, test} = require('playwright/test');
+// const {expect, test} = require('playwright/test'); //Old Node.js syntax
+import {expect, test} from '@playwright/test'; // New ES Module syntax
 
 test.use({
     browserName: "chromium",

@@ -1,4 +1,4 @@
-//amazon.page.ts
+//amazon.page.js
 import { expect } from  '@playwright/test';
 export class AmazonClass{
     constructor(page){

@@ -53,7 +53,7 @@ extendedTest("Demo tests", async({testData, page, browser, context, request, bro
             ×
           `);
     await page.screenshot({ path: "Error Message.png", fullPage: true });
-    await page.locator("[id='username']").fill("XXXXXX");
+    await page.locator("[id='username']").fill("MMMMMMM");
 //    await page.pause();
     await page.goBack({waitUntil: 'load'});
     await page.goto("https://the-internet.herokuapp.com/");
