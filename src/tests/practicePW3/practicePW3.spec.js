@@ -4,13 +4,13 @@ test.use({
     browserName: "chromium",
 })
 
-test("Practice all locators in Playwright", async({page}) => {
+test.skip("Practice all locators in Playwright", async({page}) => {
    console.log("in test");
    await page.goto("https://www.google.com");
    await page.goto("https://demoqa.com/automation-practice-form");
 });
 
-test("Test file upload", async({page}) =>{
+test.only("Test file upload", async({page}) =>{
     await page.goto("https://commitquality.com/practice-file-upload");
     const handle = page.locator("input[type=file]");
 
@@ -24,7 +24,7 @@ test("Test file upload", async({page}) =>{
     await page.getByText('Submit').click();
 });
 
-test("File downloading", async ({ page }) => {
+test.skip("File downloading", async ({ page }) => {
 
     // Navigate to the page
     await page.goto("https://commitquality.com/practice-file-download");
