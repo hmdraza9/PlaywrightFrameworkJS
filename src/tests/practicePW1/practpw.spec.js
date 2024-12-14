@@ -12,71 +12,71 @@ const getAllTodos = async (page) => {
     return response.json();  // Returns a promise of Todos[].
 };
 
-//test('Execute API in PW', async ({ page }) => {
-//
-//    const users = await getAllUsers(page);
-//    console.log("Users data:", users.length); // Logging users to check the response.
-//    const todos = await getAllTodos(page);
-//    console.log("Todos data:", todos.length); // Logging todos to check the response.
-//
-//    //print todos where title contains 'commodi'
-//    let i=0;
-//    const keyWord = "commodi";
-//    while(i<todos.length){
-//        if(todos[i].title.includes(keyWord)){
-//            console.log(`Title with text '${keyWord}' `+todos[i].title);
-//            }
-//            i++;
-//        }
-//        i = 0;
-//
-//    while(i<todos.length){
-//        if(todos[i].completed==true){
-//            console.log("Todo with completed = true: "+todos[i].title+", completed = "+todos[i].completed+", Task Id: "+todos[i].id);
-//            }
-//            i++;
-//        }
-////    }
-//
-//    // Example: Check that the users array has some data.
-//    expect(users.length).toBeGreaterThan(0); // Ensure users data is returned.
-//
-//    console.log("ID: "+users[1].id);
-//    console.log("Name: "+users[1].name);
-//    console.log("User Name: "+users[1].username);
-//    console.log("Email: "+users[1].email);
-//    console.log("Street: "+users[1].address.street);
-//    console.log("Suite: "+users[1].address.suite);
-//    console.log("City: "+users[1].address.city);
-//
-//
-//});
+test('Execute API in PW', async ({ page }) => {
 
-//test('Practice Promise in JS', async ({ page }) => {
-//    console.log("Start:", Date.now());
-//
-//    const myPromise = new Promise((resolve, reject) => {
-//        setTimeout(() => {
-//            const success = false; // Change to true or false to test both paths
-//            if (success) {
-//                resolve("Task completed successfully!");
-//                console.log("Inside Promise: Task completed successfully!");
-//            } else {
-//                reject("Task failed");
-//                console.log("Inside Promise: Task failed!");
-//            }
-//        }, 7000);
-//    });
-//
-//    try {
-//        const result = await myPromise; // Await the promise
-//        console.log(result); // Logs: "Task completed successfully!" after 2 seconds
-//    } catch (error) {
-//        console.error(error); // Logs: "Task failed" if rejected
+    const users = await getAllUsers(page);
+    console.log("Users data:", users.length); // Logging users to check the response.
+    const todos = await getAllTodos(page);
+    console.log("Todos data:", todos.length); // Logging todos to check the response.
+
+    //print todos where title contains 'commodi'
+    let i=0;
+    const keyWord = "commodi";
+    while(i<todos.length){
+        if(todos[i].title.includes(keyWord)){
+            console.log(`Title with text '${keyWord}' `+todos[i].title);
+            }
+            i++;
+        }
+        i = 0;
+
+    while(i<todos.length){
+        if(todos[i].completed==true){
+            console.log("Todo with completed = true: "+todos[i].title+", completed = "+todos[i].completed+", Task Id: "+todos[i].id);
+            }
+            i++;
+        }
 //    }
-//
-//    console.log("End:  ", Date.now());
-//});
+
+    // Example: Check that the users array has some data.
+    expect(users.length).toBeGreaterThan(0); // Ensure users data is returned.
+
+    console.log("ID: "+users[1].id);
+    console.log("Name: "+users[1].name);
+    console.log("User Name: "+users[1].username);
+    console.log("Email: "+users[1].email);
+    console.log("Street: "+users[1].address.street);
+    console.log("Suite: "+users[1].address.suite);
+    console.log("City: "+users[1].address.city);
+
+
+});
+
+test('Practice Promise in JS', async ({ page }) => {
+    console.log("Start:", Date.now());
+
+    const myPromise = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            const success = false; // Change to true or false to test both paths
+            if (success) {
+                resolve("Task completed successfully!");
+                console.log("Inside Promise: Task completed successfully!");
+            } else {
+                reject("Task failed");
+                console.log("Inside Promise: Task failed!");
+            }
+        }, 7000);
+    });
+
+    try {
+        const result = await myPromise; // Await the promise
+        console.log(result); // Logs: "Task completed successfully!" after 2 seconds
+    } catch (error) {
+        console.error(error); // Logs: "Task failed" if rejected
+    }
+
+    console.log("End:  ", Date.now());
+});
 
 
 test('Concurrent page navigation', async () => {
@@ -140,15 +140,15 @@ test('Concurrent page navigation', async () => {
      }
  };
 
- // Test method to run 3 promises concurrently
-// test('Test multiple promises with concurrency', async () => {
-//     const promise1 = printNumbers(1);
-//     const promise2 = printNumbers(2);
-//     const promise3 = printNumbers(3);
-//
-//     // Using Promise.all to run all promises concurrently
-//     await Promise.all([promise1, promise2, promise3]);
-//
-//     console.log('All promises completed');
-// });
+  Test method to run 3 promises concurrently
+ test('Test multiple promises with concurrency', async () => {
+     const promise1 = printNumbers(1);
+     const promise2 = printNumbers(2);
+     const promise3 = printNumbers(3);
+
+     // Using Promise.all to run all promises concurrently
+     await Promise.all([promise1, promise2, promise3]);
+
+     console.log('All promises completed');
+ });
 
