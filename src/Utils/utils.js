@@ -1,10 +1,12 @@
 export class UtilClass{
-    static i=0;
+    // static i=0;
     constructor(){
     }
 
 
-    getCustomName(name, i){
-        return `Screenshots/${name+Date.now()+(i++)}.png`
+    static getCustomName(name, i){
+        const tempText = `Screenshots/${name}_${Date.now()}_${(i++)}.png`;
+        console.log("In UtilClass, returned text: "+tempText)
+        return tempText;
     }
 }

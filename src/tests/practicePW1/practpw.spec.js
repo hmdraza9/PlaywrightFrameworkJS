@@ -1,6 +1,7 @@
 const { test, expect, chromium } = require('@playwright/test');
-import { UtilClass } from '../../Utils/utils';
-const XLSX = require('xlsx'); // Importing the xlsx library
+const { UtilClass } = require('../../Utils/utils');
+
+
 
 const getAllUsers = async (page) => {
     const response = await page.request.get('https://jsonplaceholder.typicode.com/users');
@@ -98,14 +99,14 @@ test('Concurrent page navigation', async () => {
     await page3.waitForTimeout(5000);
 
     await Promise.all([
-        page0.goto('https://www.google.com/search?q=page0'),
-        page1.goto('https://www.google.com/search?q=page1'),
-        page2.goto('https://www.google.com/search?q=page2'),
-        page3.goto('https://www.google.com/search?q=page3'),
-        page0.screenshot({path: "Screenshots/123.png", fullPage: true}),
-        page1.screenshot({path: "Screenshots/234.png", fullPage: true}),
-        page2.screenshot({path: "Screenshots/345.png", fullPage: true}),
-        page3.screenshot({path: "Screenshots/456.png", fullPage: true})
+         page0.goto('https://www.google.com/search?q=page0'),
+         page1.goto('https://www.google.com/search?q=page1'),
+         page2.goto('https://www.google.com/search?q=page2'),
+         page3.goto('https://www.google.com/search?q=page3'),
+         page0.screenshot({path: UtilClass.getCustomName("123", 1), fullPage: true}),
+         page1.screenshot({path: UtilClass.getCustomName("234", 1), fullPage: true}),
+         page2.screenshot({path: UtilClass.getCustomName("345", 3), fullPage: true}),
+         page3.screenshot({path: UtilClass.getCustomName("456", 3), fullPage: true})
     ]);
 
     console.log('All pages loaded');
@@ -132,8 +133,8 @@ test('Concurrent page navigation', async () => {
 });
 
  // Function to simulate printing numbers with a delay
- const printNumbers = async (id) => {
-     for (let i = 1; i <= 11; i++) {
+ const printNumbers = async (id, limit) => {
+     for (let i = 1; i <= limit; i++) {
          console.log(`Promise ${id} - Number: ${i}`);
         const randomDelay = Math.floor(Math.random() * (250 - 150 + 1)) + 150;
          await new Promise(resolve => setTimeout(resolve, randomDelay)); // Wait 200ms
@@ -142,9 +143,9 @@ test('Concurrent page navigation', async () => {
 
   //Test method to run 3 promises concurrently
  test('Test multiple promises with concurrency', async () => {
-     const promise1 = printNumbers(1);
-     const promise2 = printNumbers(2);
-     const promise3 = printNumbers(3);
+     const promise1 = printNumbers(1, 4);
+     const promise2 = printNumbers(2, 5);
+     const promise3 = printNumbers(3, 4);
 
      // Using Promise.all to run all promises concurrently
      await Promise.all([promise1, promise2, promise3]);

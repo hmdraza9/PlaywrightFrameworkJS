@@ -4,7 +4,6 @@ import { UtilClass } from '../Utils/utils';
 export class GoogleClass{
     page;
     i = 1;
-    util;
     constructor(page){
         this.page=page,
         this.util = new UtilClass();

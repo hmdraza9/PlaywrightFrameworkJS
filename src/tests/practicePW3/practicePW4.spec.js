@@ -1,4 +1,7 @@
-const {expect, test: baseTest} = require('playwright/test');
+const {expect, test: baseTest, chromium} = require('playwright/test');
+const { UtilClass } = require('../../Utils/utils');
+
+
 
 
 const test = baseTest.extend({
@@ -18,6 +21,10 @@ const test = baseTest.extend({
   console.log("testData.username: "+testData.username);
   console.log("testData.password: "+testData.password);
     await page.goto('https://google.com');
+  });
+
+  test.afterEach(async ({page}) =>{
+      await page.close();
   });
 
 
@@ -52,7 +59,7 @@ test("Demo tests", async({testData, page, browser, context, request, browserName
             Your username is invalid!
             ×
           `);
-    await page.screenshot({ path: "Error Message.png", fullPage: true });
+    await page.screenshot({ path: UtilClass.getCustomName("Error Message", 0), fullPage: true });
     await page.locator("[id='username']").fill("MMMMMMM");
 //    await page.pause();
     await page.goBack({waitUntil: 'load'});
@@ -82,7 +89,7 @@ test("Mouse move/click", async ({page}) => {
   await page.waitForTimeout(2222);
 });
 
-test.only("Mock response etc", async ({page}) =>{
+test("Mock response etc", async ({page}) =>{
 
 
 
@@ -128,3 +135,32 @@ test.only("Mock response etc", async ({page}) =>{
   console.log((jsonTextResponse));
 
   });
+
+  test("storage state test", async ({browser}) => {
+
+    const context = await browser.newContext();
+    const page = await context.newPage();
+
+    await test.step("Save auth state to file, storage state", async() =>{
+    await page.goto('https://www.demo.guru99.com/V4/');
+    await page.locator("//*[@name='uid']").fill("mngr603110");
+    await page.locator("//*[@name='password']").fill("ujegere");
+    await page.locator("//*[@name='btnLogin']").click();
+
+    // Save the authentication state to a file
+  await context.storageState({ path: 'AuthStorage/auth.json' });
+
+    });
+
+  // test.use({storageState: 'AuthStorage/auth.json'});
+
+  await test.step("Login from saves auth state", async () => {
+
+    const newContext = await browser.newContext({storageState: 'AuthStorage/auth.json'});
+    const newPage = await newContext.newPage();
+    await newPage.goto('https://www.demo.guru99.com/V4/manager/Managerhomepage.php');
+    const dashLabel = await newPage.locator('tr.heading3>td').textContent();
+    expect(dashLabel).toBe('Manger Id : mngr603110');
+
+  });
+});
