@@ -83,7 +83,37 @@ test("Mouse move/click", async ({page}) => {
 });
 
 test.only("Mock response etc", async ({page}) =>{
-  // const page = await context.newPage();
+
+
+
+  await page.route("**/users", async (route) => {
+
+    const mockResponse = {
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify({
+        message: 'Mocked data',
+        results: [1, 2, 3, 4],
+      }),
+    };
+  await route.fulfill(mockResponse);
+  });
+
+  // Go to the test page
+  await page.goto('https://jsonplaceholder.typicode.com/users');
+
+  // Perform actions/assertions based on the mocked response
+  const content = await page.locator('body').textContent();
+  console.log("content: "+content);
+  expect(content).toContain('Mocked data');
+
+  await page.route('**/todaos', async (route) => { // change this to todos from todaos
+
+    //****Simulate a network failure**** */
+
+    await route.abort();
+  });
+
   await page.goto("https://jsonplaceholder.typicode.com/todos");
 
 
@@ -97,10 +127,4 @@ test.only("Mock response etc", async ({page}) =>{
   console.log(response.statusText());
   console.log((jsonTextResponse));
 
-  await page.route("**/users", async (route) => {
-
-    // const mockResponse = 
-
   });
-
-});
