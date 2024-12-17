@@ -52,7 +52,7 @@ test('Execute API in PW', async ({ page }) => {
 
 });
 
-test('Practice Promise in JS', async ({ page }) => {
+test('Practice Promise in JS', async () => {
     console.log("Start:", Date.now());
 
     const myPromise = new Promise((resolve, reject) => {
@@ -140,7 +140,7 @@ test('Concurrent page navigation', async () => {
      }
  };
 
-  Test method to run 3 promises concurrently
+  //Test method to run 3 promises concurrently
  test('Test multiple promises with concurrency', async () => {
      const promise1 = printNumbers(1);
      const promise2 = printNumbers(2);

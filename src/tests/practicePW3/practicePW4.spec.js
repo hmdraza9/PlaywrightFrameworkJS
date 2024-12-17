@@ -1,7 +1,7 @@
-const {expect, test} = require('playwright/test');
+const {expect, test: baseTest} = require('playwright/test');
 
 
-const extendedTest = test.extend({
+const test = baseTest.extend({
     testData: async({}, use) => {
     const data = {
     username: 'admin',
@@ -13,15 +13,15 @@ const extendedTest = test.extend({
 
 //extendedTest.use({ browserName: 'chromium' });
 
-  extendedTest.beforeEach(async ({ page, testData }) => {
+  test.beforeEach(async ({ page, testData }) => {
   console.log("Opening google.com");
   console.log("testData.username: "+testData.username);
   console.log("testData.password: "+testData.password);
-    await page.goto('https://google.com/login');
+    await page.goto('https://google.com');
   });
 
 
-extendedTest("Demo tests", async({testData, page, browser, context, request, browserName, baseURL}) => {
+test("Demo tests", async({testData, page, browser, context, request, browserName, baseURL}) => {
   console.log("testData.username: "+testData.username);
   console.log("testData.password: "+testData.password);
     console.log("page: "+page);
@@ -43,7 +43,7 @@ extendedTest("Demo tests", async({testData, page, browser, context, request, bro
     await page.locator('input[type="text"]').fill("ADMIN");
     await page.locator('id=username').fill("userrnameaaeed");
     await page.locator('#username').fill("ADMINADMINADMIN");
-    const flashMsg = await page.locator('.flash');
+    const flashMsg = page.locator('.flash');
     await flashMsg.waitFor({state:'visible'});
     await expect(flashMsg).toBeVisible();
     let errorMsg = flashMsg.textContent();
@@ -59,8 +59,48 @@ extendedTest("Demo tests", async({testData, page, browser, context, request, bro
     await page.goto("https://the-internet.herokuapp.com/");
     await page.waitForTimeout(10000);
     //using regex in finding the locator
-    await expect(await page.locator('text=/.*ge & Deep.*/')).toBeVisible();
-    await expect(await page.locator('text=/Large & Deep D.?M/i')).toBeVisible();
+    await expect(page.locator('text=/.*ge & Deep.*/')).toBeVisible();
+    await expect(page.locator('text=/Large & Deep D.?M/i')).toBeVisible();
     await page.goBack({waitUntil: 'load'});
+});
+
+test("Mouse move/click", async ({page}) => {
+  page.goto('https://www.google.com');
+  // const googleLogo = await page.locator('textarea[name="q"]')
+  await page.mouse.click(100, 300); // clicks the mouse to the coordinates (000, 100);
+  await page.waitForTimeout(2222);
+  await page.goto("https://the-internet.herokuapp.com/inputs");
+  await page.locator("input[type='number']").fill("13123123213213123213321321332321312312323321312321323323");
+  const elHandle = page.locator("input[type='number']");
+  const box = await elHandle.boundingBox();
+  await page.mouse.move(box.x, box.y);
+  await page.mouse.click(box.x, box.y);
+  await page.waitForTimeout(2222);
+  await page.mouse.move(box.x + box.width/2, box.y + box.height/2);
+  await page.mouse.click(box.x + box.width/2, box.y + box.height/2);
+  await page.waitForTimeout(2222);
+  await page.waitForTimeout(2222);
+});
+
+test.only("Mock response etc", async ({page}) =>{
+  // const page = await context.newPage();
+  await page.goto("https://jsonplaceholder.typicode.com/todos");
+
+
+  const response = await page.request.get('https://jsonplaceholder.typicode.com/users');
+  const jsonResponse = await response.json();
+
+  const jsonTextResponse = JSON.stringify(jsonResponse[0], null, 2);
+
+  console.log(response.url());
+  console.log(response.status());
+  console.log(response.statusText());
+  console.log((jsonTextResponse));
+
+  await page.route("**/users", async (route) => {
+
+    // const mockResponse = 
+
+  });
 
 });
