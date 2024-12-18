@@ -28,9 +28,10 @@ const test = baseTest.extend({
   });
 
 
-test("Demo tests", async({testData, page, browser, context, request, browserName, baseURL}) => {
+test.only("Demo tests", async({testData, page, browser, context, request, browserName, baseURL}) => {
   console.log("testData.username: "+testData.username);
   console.log("testData.password: "+testData.password);
+
     console.log("page: "+page);
     console.log("browser: "+browser);
     console.log("context: "+context);
@@ -38,8 +39,10 @@ test("Demo tests", async({testData, page, browser, context, request, browserName
     console.log("browserName: "+browserName);
     console.log("baseURL: "+baseURL);
     console.log("in test");
-//    await page.goto("https://demoqa.com/automation-practice-form");
     await page.goto("https://the-internet.herokuapp.com/");
+    const title = await page.title();
+    console.log("Title: "+title);
+    expect(page).toHaveTitle('The Internet');
     const linkPH = (linkName) => `text=${linkName}`;
     await page.locator(linkPH('Form Authentication')).highlight();
     await page.waitForTimeout(2323);
