@@ -5,9 +5,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "google": "npx playwright test tests/google",
-    "api": "npx playwright test practicePW1",
-    "excel": "npx playwright test practicePW2",
-    "ui": "npx playwright test practicePW3"
+    "api": "npx playwright test playwright-api-tests",
+    "excel": "npx playwright test playwright-excel-contexts",
+    "ui": "npx playwright test playwright-ui-functional-tests",
+    "regression": "npx playwright test tests"
   },
   "author": "",
   "license": "ISC",

@@ -28,7 +28,7 @@ const test = baseTest.extend({
   });
 
 
-test.only("Demo tests", async({testData, page, browser, context, request, browserName, baseURL}) => {
+test("Demo tests", async({testData, page, browser, context, request, browserName, baseURL}) => {
   console.log("testData.username: "+testData.username);
   console.log("testData.password: "+testData.password);
 

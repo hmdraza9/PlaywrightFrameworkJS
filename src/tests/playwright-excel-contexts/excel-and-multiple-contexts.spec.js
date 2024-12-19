@@ -1,5 +1,4 @@
-const { test, expect, chromium } = require('@playwright/test');
-import { UtilClass } from '../../Utils/utils';
+const { test, chromium } = require('@playwright/test');
 const XLSX = require('xlsx'); // Importing the xlsx library
 
 const readFromExcel = (filePath) => {
@@ -18,11 +17,11 @@ const readFromExcel = (filePath) => {
     return data;
 };
 
-test.beforeEach(async ({page}) => {
+test.beforeEach(async ({}) => {
     console.log("I am in before each fixture");
 })
 
-test.afterEach(async ({page}) => {
+test.afterEach(async ({}) => {
     console.log("I am in After each fixture");
 })
 
@@ -54,9 +53,9 @@ test("Open multiple contexts and pages", async () => {
 });
 
 
-test('Read data from Excel', async () => {
+test.only('Read data from Excel', async () => {
     // Path to the Excel file you want to read
-    const filePath = process.cwd()+'/output.xlsx';  // Assuming the Excel file was saved as 'output.xlsx'
+    const filePath = process.cwd()+'/Data/output.xlsx';  // Assuming the Excel file was saved as 'output.xlsx'
 
     // Read data from Excel
     const data = readFromExcel(filePath);
@@ -85,7 +84,7 @@ const writeToExcel = (data) => {
     XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
 
     // Write the workbook to a file
-    XLSX.writeFile(wb, process.cwd()+'/output.xlsx');
+    XLSX.writeFile(wb, process.cwd()+'/Data/output.xlsx');
 };
 
 test('Write data to Excel', async () => {

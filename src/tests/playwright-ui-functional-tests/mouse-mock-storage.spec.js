@@ -65,7 +65,7 @@ test("Mouse move/click", async ({page}) => {
   
     });
   
-    test.only("storage state test", async ({browser}) => {
+    test("storage state test", async ({browser}) => {
   
       const context = await browser.newContext();
       const page = await context.newPage();
