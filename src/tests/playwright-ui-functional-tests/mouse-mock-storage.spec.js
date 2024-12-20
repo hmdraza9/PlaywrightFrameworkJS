@@ -65,10 +65,11 @@ test("Mouse move/click", async ({page}) => {
   
     });
   
-    test("storage state test", async ({browser}) => {
+    test.only("storage state test", async ({browser}) => {
   
       const context = await browser.newContext();
       const page = await context.newPage();
+     test.use({storageState: 'AuthStorage/auth.json'});
   
     await test.step("Save auth state to file, storage state", async() =>{
 
@@ -76,20 +77,19 @@ test("Mouse move/click", async ({page}) => {
       await page.locator("//*[@name='uid']").fill("mngr603110");
       await page.locator("//*[@name='password']").fill("ujegere");
       await page.locator("//*[@name='btnLogin']").click();
-  
+
       // Save the authentication state to a file
     await context.storageState({ path: 'AuthStorage/auth.json' });
 
     await page.close();
-  
+
       });
-  
-    // test.use({storageState: 'AuthStorage/auth.json'});
+
   
     await test.step("Login from saves auth state", async () => {
   
-      const newContext = await browser.newContext({storageState: 'AuthStorage/auth.json'});
-      const newPage = await newContext.newPage();
+//      const newContext = await browser.newContext({storageState: 'AuthStorage/auth.json'});
+      const newPage = await context.newPage();
       await newPage.goto('https://www.demo.guru99.com/V4/manager/Managerhomepage.php');
       const dashLabel = await newPage.locator('tr.heading3>td').textContent();
       expect(dashLabel).toBe('Manger Id : mngr603110');
