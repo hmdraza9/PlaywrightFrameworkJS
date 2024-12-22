@@ -17,7 +17,7 @@ export class GoogleClass{
     }
     async searchResult(searchTerm){
       this.page.waitForLoadState();
-      await this.page.screenshot({ path: this.util.getCustomName("Google_", this.i++), fullPage: true });           //full screen snap
+      await this.page.screenshot({ path: UtilClass.getCustomName("Google_", this.i++), fullPage: true });           //full screen snap
       await this.page.screenshot({ path: this.util.getCustomName("Google_viewPort_",this.i++), fullPage: false });
       const title = await this.page.locator("//title").textContent();
 
@@ -29,37 +29,35 @@ export class GoogleClass{
 
     async takeScreenshots(){
 
-     await this.page.locator("textarea[name='q']").screenshot({ path: this.util.getCustomName("Google_Element_scr_", this.i++) }); //Element level screenshot
+     await this.page.locator("textarea[name='q']").screenshot({ path: UtilClass.getCustomName("Google_Element_scr_", this.i++) }); //Element level screenshot
 
      //Mask sensitive info element, applies a strip of pink colour to element, that's it:
      await this.page.screenshot({
-       path: this.util.getCustomName("Google_mask_", this.i++),
+       path: UtilClass.getCustomName("Google_mask_", this.i++),
        mask: [this.page.locator('textarea[name="q"]')]
      });
 
-
-
         // Controlled quality/size of screenshots
       await this.page.screenshot({
-          path: this.util.getCustomName("Google_quality_1_",this.i++),
+          path: UtilClass.getCustomName("Google_quality_1_",this.i++),
           quality: 1,
           type: 'jpeg'
        });
 
       await this.page.screenshot({
-        path: this.util.getCustomName("Google_quality_33_",this.i++),
+        path: UtilClass.getCustomName("Google_quality_33_",this.i++),
           quality: 33,
           type: 'jpeg'
        });
 
       await this.page.screenshot({
-        path: this.util.getCustomName("Google_quality_66_",this.i++),
+        path: UtilClass.getCustomName("Google_quality_66_",this.i++),
           quality: 66,
           type: 'jpeg'
        });
 
       await this.page.screenshot({
-        path: this.util.getCustomName("Google_quality_100",this.i++),
+        path: UtilClass.getCustomName("Google_quality_100",this.i++),
           quality: 100,
           type: 'jpeg'
        });
