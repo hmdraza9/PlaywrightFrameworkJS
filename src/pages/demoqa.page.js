@@ -1,5 +1,6 @@
 //DemoQAClass.page.ts
 import { expect } from  '@playwright/test';
+import { UtilClass } from '../Utils/utils';
 export class DemoQAClass{
     page
     constructor(page){
@@ -13,8 +14,19 @@ export class DemoQAClass{
 
 
     async navigateFormPage(){
+
       await this.page.goto('https://demoqa.com/automation-practice-form');
-      this.page.waitForLoadState();
+      await this.page.waitForLoadState();
+      expect(await this.page).toHaveTitle("DEMOQA");
+      const cityDDL = await this.page.locator('#city');
+      console.log("cityDDL is Visible: "+(await cityDDL.isVisible()));
+      console.log("cityDDL is Enabled: "+(await cityDDL.isEnabled()));
+      await expect(cityDDL).toHaveText("Select City");
+      await expect(cityDDL).toHaveCount(1);
+      await expect(this.page).toHaveURL("https://demoqa.com/automation-practice-form");
+      await expect(cityDDL).toBeEnabled();
+      const dob = await this.page.locator('#dateOfBirthInput');
+      await expect(dob).toHaveValue(UtilClass.getTodayDateddMMMyyyy());
     }
 
 
