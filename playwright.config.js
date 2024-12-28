@@ -1,6 +1,11 @@
 // playwright.config.js
 const { defineConfig } = require('@playwright/test');
 
+
+// Read environment variables from file.
+require('dotenv').config();
+
+
 const config = defineConfig({
     timeout: 40*1000,
   use: {
