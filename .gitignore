@@ -6,3 +6,6 @@ test-results
 src/.DS_Store
 src/tests/.DS_Store
 .idea
+/node_modules
+/node_modules
+/node_modules
