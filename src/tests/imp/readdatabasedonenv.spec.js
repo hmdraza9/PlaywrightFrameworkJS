@@ -32,6 +32,14 @@ test.only('Read Test data based on different env in playwright ', async ({ page 
     await page.locator('#APjFqb').fill(testData.skill1);
     await page.waitForTimeout(2333);
     await page.locator('#APjFqb').clear();
+
+    for (const char of 'Playwright') {
+        await page.keyboard.press(char);
+        await page.waitForTimeout(100); // 100ms delay between each key
+    }
+    await page.waitForTimeout(2333);
+    await page.locator('#APjFqb').clear();
+    
     await page.waitForTimeout(2333);
     await page.locator('#APjFqb').fill(testData.skill1);
     await page.waitForTimeout(2333);
