@@ -1,5 +1,6 @@
 // Include playwright module
 const { test, expect } = require('@playwright/test');
+const os = require('os');
 import { qaTestData } from '../../../test-data/qa/google.json';
 import { stageTestData } from '../../../test-data/stage/google.json';
 
@@ -15,19 +16,29 @@ test.beforeAll('Running before all tests', () => {
 
 // Write a test
 test.only('Read Test data based on different env in playwright ', async ({ page }) => {
+    const platform = os.platform();
+    let Control;
+
+    if(platform.toLowerCase().includes("darwin")){
+        Control = "Meta";
+    }
+
+    if(platform.includes("windows")){
+        Control = "Control";
+    }
+
+
     // Go to URL
     await page.goto(process.env.URL);
 
     // search with keywords
     await page.locator('#APjFqb').click();
     await page.keyboard.type('Hello, Playwright!', { delay: 50 }); // 100ms between keystrokes
-    // await page.keyboard.down('Control');
-    await page.keyboard.down('Meta');
+    await page.keyboard.down(Control);
     await page.keyboard.press('A'); // Simulates Ctrl + A
     await page.waitForTimeout(2333);
     await page.keyboard.press('C'); // Simulates Ctrl + C
-    // await page.keyboard.up('Control');
-    await page.keyboard.up('Meta');
+    await page.keyboard.up(Control);
 
     await page.locator('#APjFqb').fill(testData.skill1);
     await page.waitForTimeout(2333);
@@ -39,7 +50,7 @@ test.only('Read Test data based on different env in playwright ', async ({ page 
     }
     await page.waitForTimeout(2333);
     await page.locator('#APjFqb').clear();
-    
+
     await page.waitForTimeout(2333);
     await page.locator('#APjFqb').fill(testData.skill1);
     await page.waitForTimeout(2333);
