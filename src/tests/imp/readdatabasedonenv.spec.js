@@ -15,18 +15,17 @@ test.beforeAll('Running before all tests', () => {
 })
 
 // Write a test
-test.only('Read Test data based on different env in playwright ', async ({ page }) => {
+test.only('Read Test data based on different env in playwright', async ({ page }) => {
     const platform = os.platform();
-    let Control;
+    let Control_Key;
 
-    if(platform.toLowerCase().includes("darwin")){
-        Control = "Meta";
+    if (platform.toLowerCase().includes("darwin")) {
+        Control_Key = "Meta";
     }
 
-    if(platform.includes("windows")){
-        Control = "Control";
+    if (platform.includes("windows")) {
+        Control_Key = "Control";
     }
-
 
     // Go to URL
     await page.goto(process.env.URL);
@@ -34,11 +33,11 @@ test.only('Read Test data based on different env in playwright ', async ({ page 
     // search with keywords
     await page.locator('#APjFqb').click();
     await page.keyboard.type('Hello, Playwright!', { delay: 50 }); // 100ms between keystrokes
-    await page.keyboard.down(Control);
+    await page.keyboard.down(Control_Key);
     await page.keyboard.press('A'); // Simulates Ctrl + A
     await page.waitForTimeout(2333);
     await page.keyboard.press('C'); // Simulates Ctrl + C
-    await page.keyboard.up(Control);
+    await page.keyboard.up(Control_Key);
 
     await page.locator('#APjFqb').fill(testData.skill1);
     await page.waitForTimeout(2333);
@@ -55,13 +54,5 @@ test.only('Read Test data based on different env in playwright ', async ({ page 
     await page.locator('#APjFqb').fill(testData.skill1);
     await page.waitForTimeout(2333);
     await page.locator('#APjFqb').press('Enter');
-    await page.waitForTimeout(2333);})
-
-
-
-
-
-
-
-
-
+    await page.waitForTimeout(2333);
+});
