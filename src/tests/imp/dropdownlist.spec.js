@@ -8,10 +8,11 @@ test('Handle dropdown list in playwright', async ({ page }) => {
     await page.getByText('Create new account').click();
 
     // Identify select tag
-    const monthdropDownList = page.locator('#month');
+    const monthDropDownList = page.locator('#month');
 
     // Validating default selected value
-    await expect(monthdropDownList).toHaveValue('12');
+    const currentMonth = new Date().getMonth() + 1;
+    await expect(monthDropDownList).toHaveValue(currentMonth.toString());
 
     // Drop down list all the options
     const monthsdropDownListOptions = page.locator('#month > option');

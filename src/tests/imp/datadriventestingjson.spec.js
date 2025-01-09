@@ -5,7 +5,7 @@ import { Module1TestData } from '../../../test-data/qa/google.json'
 for (const [key,value] of Object.entries(Module1TestData)) {
         
     // Write a test
-    test(`Data Driven Testing Using JSON file in playwright ${value}`, async({page}) =>{
+    test(`Data Driven Testing Using JSON file in playwright ${key} - ${value}`, async({page}) =>{
         // Go to URL
         await page.goto(process.env.URL);
 

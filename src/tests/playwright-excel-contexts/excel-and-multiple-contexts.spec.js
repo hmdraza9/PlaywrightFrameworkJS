@@ -27,6 +27,7 @@ const readFromExcel = (filePath) => {
         const sheetName = workbook.SheetNames[0];
         const sheet = workbook.Sheets[sheetName];
         const data = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+        console.log("Data in raw format: "+data);
         return data;
     } catch (err) {
         console.error('Error reading Excel file:', err);
@@ -87,9 +88,10 @@ test.only("Open multiple contexts and pages", async () => {
     await browser.close();
 });
 
-test('Read data from Excel', async () => {
+test.only('Read data from Excel', async () => {
     const filePath = path.join(process.cwd(), 'Data', 'output.xlsx');
     const data = readFromExcel(filePath);
+    console.log('Data in pretty format: ', data);
 
     console.log('Data read from Excel:', data);
     logToFile(`Data read from Excel: ${JSON.stringify(data)}`);

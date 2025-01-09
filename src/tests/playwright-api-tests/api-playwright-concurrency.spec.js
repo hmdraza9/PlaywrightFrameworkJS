@@ -80,7 +80,7 @@ test('Practice Promise in JS', async () => {
 });
 
 
-test('Concurrent page navigation', async () => {
+test.only('Concurrent page navigation', async () => {
     const browser0 = await chromium.launch();
     const browser1 = await chromium.launch();
     const browser2 = await chromium.launch();
@@ -108,6 +108,12 @@ test('Concurrent page navigation', async () => {
          page2.screenshot({path: UtilClass.getCustomName("345", 3), fullPage: true}),
          page3.screenshot({path: UtilClass.getCustomName("456", 3), fullPage: true})
     ]);
+
+
+         console.log("Page 0 title: "+await page0.title());
+         console.log("Page 1 title: "+await page1.title());
+         console.log("Page 2 title: "+await page2.title());
+         console.log("Page 3 title: "+await page3.title());
 
     console.log('All pages loaded');
 

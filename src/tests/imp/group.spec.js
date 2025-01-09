@@ -1,78 +1,104 @@
 // Include playwright module
-const {test, expect} = require('@playwright/test');
+const {
+    test,
+    expect
+} = require('@playwright/test');
+
+
+test.describe('11Smoke Testing', () => {
+
+    test.describe('22Smoke Testing', () => {
+
+        test.describe('33Smoke Testing', () => {
+
+            test.describe('44Smoke Testing', () => {
+
+                test.only('55Smoke Testing', () => {
+                    //                        console.log(123)
+                })
+            })
+        })
+    })
+})
 
 test.describe('Layer one grouping', () => {
     test.describe('Smoke Testing', () => {
-    
-    // Write a test
-    test('Test1', async({page}) =>{
 
-        console.log('Assertions in playwright test is running...!')
+        // Write a test
+        test('Test1', async ({
+            page
+        }) => {
 
-        // Go to URL
-        await page.goto('https://www.google.com/search?q=playwright+by+testers+talk')
+            console.log('Assertions in playwright test is running...!')
 
-        // assert url
-        await expect.soft(page).toHaveURL('https://www.google.com/search?q=playwright+by+testers+talk')
+            // Go to URL
+            await page.goto('https://www.google.com/search?q=playwright+by+testers+talk')
 
-        // assert title
-        await expect(page).toHaveTitle('playwright by testers talk - Google Search')
+            // assert url
+            await expect.soft(page).toHaveURL('https://www.google.com/search?q=playwright+by+testers+talk')
 
-        // assert text
-        await expect(page.locator("[aria-label='Search']").first()).toHaveText('playwright by testers talk');
-        
-        //assert editable enabled visible
-        await expect(page.locator("[aria-label='Search']").first()).toBeEditable();
-        await expect(page.locator("[aria-label='Search']").first()).toBeVisible();
-        await expect(page.locator("[aria-label='Search']").first()).toBeEnabled();
+            // assert title
+            await expect(page).toHaveTitle('playwright by testers talk - Google Search')
 
-        //assert disabled empty count
-        //await expect(page.locator("[aria-label='Search']").first()).toBeDisabled();
+            // assert text
+            await expect(page.locator("[aria-label='Search']").first()).toHaveText('playwright by testers talk');
 
-        await expect(page.locator("[aria-label='Search']").first()).not.toBeEmpty();
+            //assert editable enabled visible
+            await expect(page.locator("[aria-label='Search']").first()).toBeEditable();
+            await expect(page.locator("[aria-label='Search']").first()).toBeVisible();
+            await expect(page.locator("[aria-label='Search']").first()).toBeEnabled();
 
-        await expect(page.locator("[aria-label='Search']")).toHaveCount(2)
+            //assert disabled empty count
+            //await expect(page.locator("[aria-label='Search']").first()).toBeDisabled();
 
-        await page.waitForTimeout(5000);
+            await expect(page.locator("[aria-label='Search']").first()).not.toBeEmpty();
+
+            await expect(page.locator("[aria-label='Search']")).toHaveCount(2)
+
+            await page.waitForTimeout(5000);
+        })
+
+        // Write a test
+        test('Test2', async ({
+            page
+        }) => {
+
+            console.log('Assertions in playwright test is running...!')
+
+            // Go to URL
+            await page.goto('https://www.google.com/search?q=playwright+by+testers+talk')
+
+            // assert url
+            await expect(page).toHaveURL('https://www.google.com/search?q=playwright+by+testers+talk')
+
+            // assert title
+            await expect(page).toHaveTitle('playwright by testers talk - Google Search')
+
+            // assert text
+            await expect(page.locator("[aria-label='Search']").first()).toHaveText('playwright by testers talk')
+
+            //assert editable enabled visible
+            await expect(page.locator("[aria-label='Search']").first()).toBeEditable();
+            await expect(page.locator("[aria-label='Search']").first()).toBeVisible();
+            await expect(page.locator("[aria-label='Search']").first()).toBeEnabled();
+
+            //assert disabled empty count
+            //await expect(page.locator("[aria-label='Search']").first()).toBeDisabled();
+
+            await expect(page.locator("[aria-label='Search']").first()).not.toBeEmpty();
+
+            await expect(page.locator("[aria-label='Search']")).toHaveCount(2)
+
+            await page.waitForTimeout(5000);
+        })
     })
-
-    // Write a test
-    test('Test2', async({page}) =>{
-
-        console.log('Assertions in playwright test is running...!')
-
-        // Go to URL
-        await page.goto('https://www.google.com/search?q=playwright+by+testers+talk')
-
-        // assert url
-        await expect(page).toHaveURL('https://www.google.com/search?q=playwright+by+testers+talk')
-
-        // assert title
-        await expect(page).toHaveTitle('playwright by testers talk - Google Search')
-
-        // assert text
-        await expect(page.locator("[aria-label='Search']").first()).toHaveText('playwright by testers talk')
-
-        //assert editable enabled visible
-        await expect(page.locator("[aria-label='Search']").first()).toBeEditable();
-        await expect(page.locator("[aria-label='Search']").first()).toBeVisible();
-        await expect(page.locator("[aria-label='Search']").first()).toBeEnabled();
-
-        //assert disabled empty count
-        //await expect(page.locator("[aria-label='Search']").first()).toBeDisabled();
-
-        await expect(page.locator("[aria-label='Search']").first()).not.toBeEmpty();
-
-        await expect(page.locator("[aria-label='Search']")).toHaveCount(2)
-
-        await page.waitForTimeout(5000);
-    })
-})
 })
 
 test.describe('Sanity Testing', () => {
     // Write a test
-    test('Test3', async({page}) =>{
+    test('Test3', async ({
+        page
+    }) => {
 
         console.log('Assertions in playwright test is running...!')
 
@@ -104,7 +130,9 @@ test.describe('Sanity Testing', () => {
     })
 
     // Write a test
-    test('Test4', async({page}) =>{
+    test('Test4', async ({
+        page
+    }) => {
 
         console.log('Assertions in playwright test is running...!')
 
@@ -136,7 +164,9 @@ test.describe('Sanity Testing', () => {
     })
 
     // Write a test
-    test('Test5', async({page}) =>{
+    test('Test5', async ({
+        page
+    }) => {
 
         console.log('Assertions in playwright test is running...!')
 
@@ -173,38 +203,40 @@ test.describe('Layer 1', () => {
     test.describe('Layer 2', () => {
 
 
-test.describe('Sanity Testing', () => {
-    // Write a test
-    test('Test5', async({page}) =>{
+        test.describe('Sanity Testing', () => {
+            // Write a test
+            test('Test5', async ({
+                page
+            }) => {
 
-        console.log('Assertions in playwright test is running...!')
+                console.log('Assertions in playwright test is running...!')
 
-        // Go to URL
-        await page.goto('https://www.google.com/search?q=playwright+by+testers+talk')
+                // Go to URL
+                await page.goto('https://www.google.com/search?q=playwright+by+testers+talk')
 
-        // assert url
-        await expect(page).toHaveURL('https://www.google.com/search?q=playwright+by+testers+talk')
+                // assert url
+                await expect(page).toHaveURL('https://www.google.com/search?q=playwright+by+testers+talk')
 
-        // assert title
-        await expect(page).toHaveTitle('playwright by testers talk - Google Search')
+                // assert title
+                await expect(page).toHaveTitle('playwright by testers talk - Google Search')
 
-        // assert text
-        await expect(page.locator("[aria-label='Search']").first()).toHaveText('playwright by testers talk')
+                // assert text
+                await expect(page.locator("[aria-label='Search']").first()).toHaveText('playwright by testers talk')
 
-        //assert editable enabled visible
-        await expect(page.locator("[aria-label='Search']").first()).toBeEditable();
-        await expect(page.locator("[aria-label='Search']").first()).toBeVisible();
-        await expect(page.locator("[aria-label='Search']").first()).toBeEnabled();
+                //assert editable enabled visible
+                await expect(page.locator("[aria-label='Search']").first()).toBeEditable();
+                await expect(page.locator("[aria-label='Search']").first()).toBeVisible();
+                await expect(page.locator("[aria-label='Search']").first()).toBeEnabled();
 
-        //assert disabled empty count
-        //await expect(page.locator("[aria-label='Search']").first()).toBeDisabled();
+                //assert disabled empty count
+                //await expect(page.locator("[aria-label='Search']").first()).toBeDisabled();
 
-        await expect(page.locator("[aria-label='Search']").first()).not.toBeEmpty();
+                await expect(page.locator("[aria-label='Search']").first()).not.toBeEmpty();
 
-        await expect(page.locator("[aria-label='Search']")).toHaveCount(2)
+                await expect(page.locator("[aria-label='Search']")).toHaveCount(2)
 
-        await page.waitForTimeout(5000);
+                await page.waitForTimeout(5000);
+            })
+        })
     })
-})
-})
 })

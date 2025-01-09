@@ -16,7 +16,7 @@ const records = parse (
 for (const record of records) {
         
     // Write a test
-    test(`Data Driven Testing Using CSV file in playwright ${record.TestCaseId}`, async({page}) =>{
+    test(`Data Driven Testing Using CSV file in playwright ${record.TestCaseId}, skill 1 = '${record.Skill1}', skill 2 = '${record.Skill2}'`, async({page}) =>{
         // Go to URL
         await page.goto(process.env.URL);
 
