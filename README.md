@@ -116,3 +116,7 @@ We suggest that you begin by typing:
 
   ### allure generate allure-results --clean
   ### allure open
+
+
+## Install BDD Cucumber for playwright
+- npm install playwright @cucumber/cucumber@latest
