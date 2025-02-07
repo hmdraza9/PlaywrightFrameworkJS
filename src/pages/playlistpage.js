@@ -1,4 +1,4 @@
-// Inlcude playwright module
+// Include playwright module
 const { expect } = require('@playwright/test')
 
 // create class

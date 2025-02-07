@@ -8,8 +8,16 @@ test.beforeEach(() => {
   console.log("Before test");
 });
 
+test.beforeAll(() => {
+  console.log("Before all tests");
+});
+
 test.afterEach(() => {
   console.log("After test");
+});
+
+test.afterAll(() => {
+  console.log("After all tests");
 });
 
 test('Navigate to Amazon.in', async ({ page }) => {

@@ -80,7 +80,7 @@ test('Practice Promise in JS', async () => {
 });
 
 
-test.only('Concurrent page navigation', async () => {
+test('Concurrent page navigation', async () => {
     const browser0 = await chromium.launch();
     const browser1 = await chromium.launch();
     const browser2 = await chromium.launch();
@@ -148,7 +148,7 @@ test.only('Concurrent page navigation', async () => {
  };
 
   //Test method to run 3 promises concurrently
- test('Test multiple promises with concurrency', async () => {
+ test.only('Test multiple promises with concurrency', async () => {
      const promise1 = printNumbers(1, 4);
      const promise2 = printNumbers(2, 5);
      const promise3 = printNumbers(3, 4);
