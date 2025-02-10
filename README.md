@@ -44,17 +44,22 @@ Playwright will download the browsers needed as well as create the following fil
 - tests-examples/
     demo-todo-app.spec.js
 
+
+### Number of workers can be assigned is:
+- by percent - ```npx playwright test imp/myTest --workers=100%```
+- by count - ```npx playwright test imp/myTest --workers=100```
+-  Or maybe even more than that, but if you use ‘100%’, it means it will execute with the same number of workers as the available CPU cores.
   
-#### dotenv Package Installation Command
+#### The dotenv Package Installation Command
 - npm install dotenv --save
 
-#### csv-parse Package Installation Command
+#### The csv-parse Package Installation Command
 - npm install csv-parse
 
-#### faker-js plugin for test data generation
+#### The faker-js plugin for test data generation
 - npm install @faker-js/faker --save-dev
 
-#### luxon plugin for custom dates
+#### The luxon plugin for custom dates
 - npm install --save luxon
 
 ## How to update to playwright to the latest version
