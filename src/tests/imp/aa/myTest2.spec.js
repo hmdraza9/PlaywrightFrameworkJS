@@ -8,7 +8,7 @@ test.beforeEach(async({page}) => {
 });
 
 // Configure the describe block to run tests in parallel
-test.describe.configure({ mode: 'parallel', });
+//test.describe.configure({ mode: 'parallel', });
 
 const TODO_items = [
     "1, buy some cheese"
