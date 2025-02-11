@@ -19,6 +19,7 @@ const config = defineConfig({
     screenshot: 'on',                // Take screenshots during test failures
     viewport: null,                  // Open the browser in fullscreen mode
   },
+  fullyParallel: false, // Ensures all tests run fully in parallel
   reporter: [
     ['junit', { outputFile: 'results.xml' }], // JUnit report for CI/CD integration
     ['html', { open: 'never' }]               // HTML report with video support
