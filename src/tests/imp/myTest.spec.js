@@ -399,7 +399,7 @@ test.describe.parallel('New TODO', () => {
     test(`Should allow todo to be created ${todo}`, async({page}) =>{
 
         await page.getByPlaceholder('What needs to be done?').fill(todo);
-        await page.waitForTimeout(3000);
+        await page.waitForTimeout(1000);
 
         });
 
