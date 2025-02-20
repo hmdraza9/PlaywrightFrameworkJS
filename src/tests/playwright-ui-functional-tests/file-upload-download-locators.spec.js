@@ -40,6 +40,6 @@ test("File downloading", async ({ page }) => {
     await page.waitForTimeout(3333);
 
     // Save the downloaded file
-    await download.saveAs("./Downloads/newFile-downloaded");
+    await download.saveAs("./Downloads/dummy_file.txt");
     await page.waitForTimeout(3333);
 });
